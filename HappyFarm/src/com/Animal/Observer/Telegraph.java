@@ -1,3 +1,5 @@
+package Animal.Observer;
+
 public class Telegraph extends Observer{
  
     public Telegraph(AnimalMonitor monitor){

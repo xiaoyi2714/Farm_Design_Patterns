@@ -1,3 +1,5 @@
+package Animal.Decorator;
+
 public class NormalWool implements Wool {
  
     @Override

@@ -1,3 +1,5 @@
+package Animal.Decorator;
+
 public abstract class WoolDecorator implements Wool {
     protected Sheep sheep;
     protected int quantity;

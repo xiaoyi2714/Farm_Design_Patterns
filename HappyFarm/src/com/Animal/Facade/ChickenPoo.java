@@ -1,3 +1,5 @@
+package Animal.Facade;
+
 public class ChickenPoo implements AnimalPoo {
  
     @Override

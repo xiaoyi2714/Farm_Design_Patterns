@@ -1,3 +1,5 @@
+package Animal.Decorator;
+
 public class RedWoolDecorator extends WoolDecorator {
  
     public RedWoolDecorator() {

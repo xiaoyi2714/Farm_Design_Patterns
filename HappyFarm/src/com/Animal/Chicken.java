@@ -1,3 +1,5 @@
+package Animal;
+
 public class Sheep extends Animal {
     public static string product = "egg";
 

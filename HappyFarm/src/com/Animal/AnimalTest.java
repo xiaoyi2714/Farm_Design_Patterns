@@ -1,3 +1,14 @@
+package Animal;
+
+import Animal.*;
+import Animal.Adapter.*;
+import Animal.Bridge.*;
+import Animal.Decorator.*;
+import Animal.Facade.*;
+import Animal.Factory.*;
+import Animal.Observer.*;
+import Animal.Strategy.*;
+
 public class AnimalTest {
     public static void main(String[] args) {
         System.out.println("-------------Factory Text-------------");

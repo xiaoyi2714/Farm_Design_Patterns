@@ -1,3 +1,5 @@
+package Animal;
+
 public class Animal {
     public int id;
     public int hungryPoint;

@@ -1,4 +1,4 @@
-import Animal.*;
+package Animal.Factory;
 
 public class FactoryDemo {
     public int id = 0;

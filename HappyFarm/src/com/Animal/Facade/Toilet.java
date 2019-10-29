@@ -1,3 +1,5 @@
+package Animal.Facade;
+
 public class Toilet {
     private AnimalPoo catPoo;
     private AnimalPoo chickenPoo;

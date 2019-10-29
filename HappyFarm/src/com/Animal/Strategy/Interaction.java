@@ -1,3 +1,5 @@
+package Animal.Strategy;
+
 public class Interaction {
     private Strategy strategy;
  

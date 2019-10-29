@@ -1,3 +1,5 @@
+package Animal.Adapter;
+
 public class NormalEat implements AnimalEat {
  
    @Override

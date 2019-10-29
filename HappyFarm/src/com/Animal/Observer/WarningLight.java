@@ -1,3 +1,5 @@
+package Animal.Observer;
+
 public class WarningLight extends Observer{
  
     public WarningLight(AnimalMonitor monitor){

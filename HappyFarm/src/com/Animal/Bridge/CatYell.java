@@ -1,3 +1,5 @@
+package Animal.Bridge;
+
 public class CatYell implements YellAPI {
     @Override
     public void animalYell(int time) {

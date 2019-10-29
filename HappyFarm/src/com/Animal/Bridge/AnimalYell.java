@@ -1,3 +1,5 @@
+package Animal.Bridge;
+
 public class AnimalYell {
     private int time;
     private YellAPI yellAPI;

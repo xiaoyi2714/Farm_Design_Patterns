@@ -1,3 +1,5 @@
+package Animal.Strategy;
+
 public class Sing implements Strategy{
     @Override
     public void doOperation(Animal animal1, Animal animal2) {

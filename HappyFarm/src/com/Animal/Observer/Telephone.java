@@ -1,3 +1,5 @@
+package Animal.Observer;
+
 public class Telephone extends Observer{
  
     public Telephone(AnimalMonitor monitor){
