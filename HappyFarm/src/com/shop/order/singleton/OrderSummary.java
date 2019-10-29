@@ -1,6 +1,6 @@
 package com.shop.order.singleton;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -18,7 +18,7 @@ public class OrderSummary {
         return summary;
     }
 
-    public void add(@NotNull Class cls, @NotNull Integer value){
+    public void add(Class cls, Integer value){
         String type = cls.getSimpleName();
         if (!saleList.containsKey(type)){
             saleList.put(type, value);
@@ -28,7 +28,7 @@ public class OrderSummary {
 
     }
 
-    public void add(@NotNull Map<Class, Integer> map){
+    public void add(Map<Class, Integer> map){
         for (Map.Entry<Class, Integer> entry : map.entrySet()){
             this.add(entry.getKey(), entry.getValue());
         }

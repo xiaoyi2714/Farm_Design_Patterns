@@ -1,13 +1,13 @@
 package com.shop.repository;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 public class RepositoryImpl implements Repository {
-    public void add(@NotNull Class cls, @NotNull Integer value){
+    public void add(Class cls, Integer value){
         String type = cls.getSimpleName();
         if (!storageList.containsKey(type)){
             storageList.put(type, value);
@@ -18,14 +18,14 @@ public class RepositoryImpl implements Repository {
 
     }
 
-    public void add(@NotNull Map<Class, Integer> map){
+    public void add(Map<Class, Integer> map){
         for (Map.Entry<Class, Integer> entry : map.entrySet()){
             this.add(entry.getKey(), entry.getValue());
         }
 
     }
 
-    public boolean ask(@NotNull Class cls, @NotNull Integer value){
+    public boolean ask(Class cls, Integer value){
         String type = cls.getSimpleName();
         if(storageList.containsKey(type) && storageList.get(type) >= value){
             this.consume(type, value);
@@ -34,7 +34,7 @@ public class RepositoryImpl implements Repository {
         return false;
     }
 
-    public boolean ask(@NotNull Map<Class, Integer> map){
+    public boolean ask(Map<Class, Integer> map){
         boolean result = true;
         //与add不同，当一个请求中有一项要求无法满足，则应当拒绝执行该请求的所有要求
         for (Map.Entry<Class, Integer> entry : map.entrySet()){
@@ -51,7 +51,7 @@ public class RepositoryImpl implements Repository {
         return true;
     }
 
-    public Integer checkItemNum(@NotNull Class cls){
+    public Integer checkItemNum(Class cls){
         return storageList.get(cls.getSimpleName());
     }
 

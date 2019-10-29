@@ -1,12 +1,12 @@
 package com.shop.order.factory;
 
-import org.jetbrains.annotations.NotNull;
+
 
 //订单工厂
 public class OrderFactory {
 
     //使用getOrder方法获取订单类型的对象
-    public Order getOrder(@NotNull String orderType){
+    public Order getOrder(String orderType){
         switch (orderType){
             case "BUY":
                 return new BuyOrder();

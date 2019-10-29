@@ -2,8 +2,8 @@ package com.shop.store;
 
 
 import com.shop.employee.EmployeeList;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+
+
 
 
 
@@ -57,7 +57,7 @@ public class SingleStore implements Store{
     }
 
     //通过员工调用促销策略，计算促销后金额
-    public Double useStrategy(@NotNull Double initialPrice) {
+    public Double useStrategy(Double initialPrice) {
         //需要输入选择的初始金额，策略已经选好了
 
         //计算使用促销策略后的金额，并返回
@@ -65,7 +65,7 @@ public class SingleStore implements Store{
     }
 
     //订单通过update来更新profit
-    public void updateProfit(@NotNull Double money,@NotNull String op){
+    public void updateProfit(Double money,String op){
         switch (op){
             //"SALE"代表加钱，”BUY”代表减钱
             case "SALE":{
