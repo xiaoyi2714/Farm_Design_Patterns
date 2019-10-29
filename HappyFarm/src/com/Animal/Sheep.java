@@ -1,6 +1,6 @@
 public class Sheep extends Animal {
     public int wool;
-    public static String product = "wool";
+    public static String product = "Wool";
 
     public Sheep(int id) {
         this.id = id;
