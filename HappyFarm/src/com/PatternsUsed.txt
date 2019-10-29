@@ -1,0 +1,10 @@
+Builder 
+Factory PlantFactory生产3种plant
+Mediator FarmManager作为stock类和field类的中介者。
+Proxy FarmManager代理所有PlantFactory和Field的所有操作，且无法在farm包外访问。
+Singleton FarmManager、Field都是。
+Flyweight plants seeds products。
+组合 Plant组成Field，组成FieldManager，再和StockManager组成FarmManager。
+命令 StockManager执行FarmManager的命令，执行对象为另一个包的仓库。
+memento fieldMemento备份FieldManager的fieldList数据，由fieldMemengtoManager管理，多种的全部拔掉。
+

@@ -1,9 +1,27 @@
 package com.farm;
 import java.util.*;
+import com.farm.memonto.*;
 
 class FieldManager {
 	private static FieldManager fieldInstance;
     private List<Field> fieldList;
+
+    //备忘录，需要备份的类
+    public FieldMemento save() {
+        FieldMemento m=new FieldMemento(fieldList);
+        FieldMementoManager.getInstance().addMemento(m);
+        return m;
+    }
+    //恢复状态，如果那个时候没有植物而现在有植物了，多种的全部拔掉。
+    public void restore(FieldMemento memento) {
+        List<Field> oldList = memento.getMementoList();
+        for (int i=0;i<oldList.size();i++){
+            if (fieldList.get(i).getPlant()!=null && oldList.get(i).getPlant()==null){
+                fieldList.get(i).delPlant();
+            }
+        }
+    }
+
     //私有构造函数，成为单实例变量
     private FieldManager(){
         fieldList = new ArrayList<Field>();

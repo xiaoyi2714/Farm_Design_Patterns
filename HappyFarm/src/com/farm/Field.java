@@ -1,6 +1,6 @@
 package com.farm;
 
-class Field {
+public class Field {
 	private int index;
 	private Plant plant;
 	
