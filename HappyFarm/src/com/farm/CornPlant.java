@@ -4,9 +4,7 @@ class CornPlant implements Plant{
 	private int presentGrowth=0;
     private final static int maxGrowth=120;
     private final static String name="玉米植株";
-    
-    
-	//当经过一定时间或者施肥就成长。
+
     @Override
     public void grow(int num)
     {

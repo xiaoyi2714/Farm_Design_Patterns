@@ -6,7 +6,6 @@ class PotatoPlant implements Plant{
     private final static String name="土豆植株";
     
 
-	//当经过一定时间或者施肥就成长。
     @Override
     public void grow(int num)
     {

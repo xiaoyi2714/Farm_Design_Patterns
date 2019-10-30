@@ -10,12 +10,12 @@ import com.farm.command.Command;
 public class StockManager {
 	
 	private List<Command> commandList = new ArrayList<Command>(); 
-	
+	//命令模式，添加命令
 	public void addCommand(Command c)
 	{
 		commandList.add(c);      
 	}
-
+	//命令模式，执行存着的所有指令
 	public void exeAllCommand()
 	{
 		for (Command c : commandList) {
@@ -23,7 +23,7 @@ public class StockManager {
 		}
 		commandList.clear();
 	}
-
+	//直接执行一条指令
 	public boolean exeACommand(Command c)
 	{
 		return c.execute();

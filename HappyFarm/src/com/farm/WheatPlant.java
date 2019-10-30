@@ -5,8 +5,7 @@ class WheatPlant implements Plant{
     private final static int maxGrowth=80;
     private final static String name="小麦植株";
     
-    
-	//当经过一定时间或者施肥就成长。
+
     @Override
     public void grow(int num)
     {

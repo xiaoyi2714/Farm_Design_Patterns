@@ -3,6 +3,8 @@ package com.farm.command;
 import com.shop.order.Corn;
 import com.shop.repository.RepositoryProxy;
 
+
+//在仓库添加item
 public class AddItemCommand extends Command{
 	@Override
 	public boolean execute()
@@ -12,7 +14,7 @@ public class AddItemCommand extends Command{
 
 	@Override
 	public int execute(Class cls) {
-		RepositoryProxy.Instance().add(Corn.class, 1);
+		RepositoryProxy.Instance().add(cls, 1);
 		return 1;
 	}
 }

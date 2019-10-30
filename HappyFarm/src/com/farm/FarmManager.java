@@ -1,15 +1,14 @@
 package com.farm;
-import com.shop.employee.CornSeed;
-import com.shop.employee.PotatoSeed;
-import com.shop.employee.WheatSeed;
+import com.farm.memento.FieldMemento;
 import com.farm.command.*;
+import com.farm.memento.FieldMementoManager;
 
 public class FarmManager {
 	
     private static FarmManager farmManagerInstance;
     private FieldManager field;
     private StockManager stock;
-
+	//构造函数
     private FarmManager(FieldManager _field, StockManager _stock){
         this.field = _field;
         this.stock = _stock;
@@ -38,20 +37,12 @@ public class FarmManager {
     //重载，指定在第fieldIndex种
     public boolean seeding(Class seedClass, int fieldIndex)
 	{
-    	Class plantClass=PlantFactory.seeding(seedClass);
+		Plant newPlant=PlantFactory.getAPlant(seedClass);
 
-    	if (plantClass==null){
+		if (newPlant==null){
 			System.out.println("尝试在"+fieldIndex+
 					"号田种下一个不认识的植物。种植结果：失败");
 			return false;
-		}
-		Plant newPlant= null;
-		try {
-			newPlant = (Plant) plantClass.newInstance();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
 		}
 		if(stock.exeACommand(new QueryItemCommand(),seedClass)<=0) {
     		System.out.println("尝试在"+fieldIndex+
@@ -72,16 +63,13 @@ public class FarmManager {
     	return false;
     }
     
-    public void showAllItems()
-    {
-    	stock.exeACommand(new ShowAllCommand());
-    }
+
     //展示田里所有植物的类型和成长值
     public void showAllPlants()
     {
     	System.out.println();
     	System.out.println("我们的农田：");
-    	if (field.getNumFields()==0) {
+    	if (field.getNumPlants()==0) {
     		System.out.println("空");
     	}
     	for (int i=0;i<field.getNumFields();i++) {
@@ -137,13 +125,55 @@ public class FarmManager {
     //收获函数
     public Plant harvest(int fieldIndex)
     {
-    	Plant p=field.harvest(fieldIndex);
+		Plant p = field.getPlantByField(fieldIndex);
+
     	if (p==null) {
     		System.out.println("尝试收割第"+fieldIndex+"块田：无法收割，这里没有植物");
     		return null;
     	}
+    	else if (p.getPresentGrowth() < p.getMaxGrowth()) {
+			System.out.println("尝试收割第"+fieldIndex+"块田：植物尚未成熟");
+			return null;
+		}
+
+		field.harvest(fieldIndex);
+    	System.out.println("成功收割第"+fieldIndex+"块田的"+p.getName());
+
+    	stock.exeACommand(new AddItemCommand(),ProductFactory.getProductionClass(p.getClass()));
     	return p;
     }
 
-    
+    //提供接口调用备忘录保存
+	public FieldMemento saveFieldStatus()
+	{
+		System.out.println();
+		System.out.println("开始储存此时农田状态");
+		showAllPlants();
+		FieldMemento m = field.save();
+		if (m!=null) {
+			System.out.println("备份已保存。");
+			System.out.println();
+			return m;
+		}
+		else{
+			System.out.println("备份失败。");
+			System.out.println();
+			return null;
+		}
+	}
+	//提供接口调用备忘录恢复
+	public void restore(int index) {
+		System.out.println("开始恢复第" + index + "次的农田备份。");
+		FieldMemento m = FieldMementoManager.getInstance().getMemento(index);
+		if (m!=null) {
+			field.restore(m);
+		}
+		showAllPlants();
+		System.out.println("已拔掉所有在那之后种的植物，完成恢复。");
+	}
+	//提供接口展示所有
+	public void showAllFieldMementos()
+	{
+		FieldMementoManager.getInstance().showAllMementos();
+	}
 }

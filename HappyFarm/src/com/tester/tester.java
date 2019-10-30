@@ -22,6 +22,9 @@ public class tester {
 		RepositoryProxy.Instance().showAllItems();
 
 		FarmManager fm=FarmManager.getInstance();
+
+		fm.saveFieldStatus();
+		fm.showAllFieldMementos();
 		fm.seeding(PotatoSeed.class);
 		fm.seeding(PotatoSeed.class, 0);
 		fm.seeding(PotatoSeed.class);
@@ -29,13 +32,12 @@ public class tester {
 		fm.seeding(WheatSeed.class);
 		fm.seeding(WheatSeed.class);
 		fm.seeding(CornSeed.class);
-		fm.showAllPlants();
-		fm.showAllItems();
+		fm.saveFieldStatus();
+		fm.showAllFieldMementos();
 		fm.giveFertilizer(0, OrganicFertilizer.class);
 		fm.giveFertilizer(0, OrganicFertilizer.class);
 		fm.giveFertilizer(0, OrganicFertilizer.class);
 		fm.showAllPlants();
-		fm.showAllItems();
 		fm.harvest(0);
 		fm.showAllPlants();
 		fm.giveFertilizer(2, OrganicFertilizer.class);
@@ -44,13 +46,19 @@ public class tester {
 		fm.harvest(2);
 		fm.giveFertilizer(2, ChemicalFertilizer.class);
 		fm.giveFertilizer(2, ChemicalFertilizer.class);
-		fm.harvest(2);
 		fm.giveFertilizer(2, ChemicalFertilizer.class);
-		fm.harvest(3);
-		fm.showAllPlants();
-		fm.seeding(PotatoSeed.class,0);
+		fm.giveFertilizer(2, ChemicalFertilizer.class);
+		fm.harvest(2);
+		fm.harvest(2);
+
+		fm.saveFieldStatus();
+		fm.showAllFieldMementos();
 		fm.seeding(PotatoSeed.class);
+		fm.seeding(PotatoSeed.class, 51);
 		fm.showAllPlants();
+		fm.showAllFieldMementos();
+		fm.restore(1);
+		fm.restore(0);
 
 	}
 

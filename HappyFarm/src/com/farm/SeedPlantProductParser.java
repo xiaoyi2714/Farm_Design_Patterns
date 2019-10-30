@@ -18,4 +18,20 @@ public class SeedPlantProductParser {
             return null;
         }
     }
+
+    public static Class plantToProduct(Class cls)
+    {
+        if (cls== CornPlant.class){
+            return Corn.class;
+        }
+        else if (cls==PotatoPlant.class){
+            return Potato.class;
+        }
+        else if(cls==WheatPlant.class){
+            return Wheat.class;
+        }
+        else{
+            return null;
+        }
+    }
 }
