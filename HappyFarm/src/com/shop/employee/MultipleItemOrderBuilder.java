@@ -1,6 +1,6 @@
 package com.shop.employee;
 
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,7 +12,7 @@ public class MultipleItemOrderBuilder {
         items.put(cls,totalCost);
     }
 
-    public Double getCost(@NotNull Map<Class, Integer> List){
+    public Double getCost(Map<Class, Integer> List){
         Double total = 0.0;
         for(Map.Entry<Class, Integer> entry : List.entrySet()) {
             Double cost = 0.0;

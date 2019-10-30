@@ -1,7 +1,7 @@
 package com.shop.repository;
 
 import com.shop.store.SingleStore;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,19 +29,19 @@ public class RepositoryProxy implements Repository {
         this.observers.add(singleStore);
     }
 
-    public void add(@NotNull Class cls, @NotNull Integer value){
+    public void add(Class cls, Integer value){
         repository.add(cls, value);
         notifyAllObservers();
     }
 
     //以一个类的字典添加库存
-    public void add(@NotNull Map<Class, Integer> map){
+    public void add(Map<Class, Integer> map){
         repository.add(map);
         notifyAllObservers();
     }
 
     //为某一类请求消耗
-    public boolean ask(@NotNull Class cls, @NotNull Integer value){
+    public boolean ask(Class cls, Integer value){
         boolean result = repository.ask(cls, value);
         if (result){
             notifyAllObservers();
@@ -50,7 +50,7 @@ public class RepositoryProxy implements Repository {
     }
 
     //以一个类的字典请求消耗
-    public boolean ask(@NotNull Map<Class, Integer> map){
+    public boolean ask(Map<Class, Integer> map){
         boolean result = repository.ask(map);
         if (result){
             notifyAllObservers();
@@ -59,7 +59,7 @@ public class RepositoryProxy implements Repository {
     }
 
     //查询仓库一项库存的数量
-    public Integer checkItemNum(@NotNull Class cls){
+    public Integer checkItemNum(Class cls){
         return repository.checkItemNum(cls);
     }
 

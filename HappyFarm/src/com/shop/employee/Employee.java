@@ -7,7 +7,7 @@ import java.util.Map;
 import com.shop.order.factory.Order;
 import com.shop.order.factory.OrderFactory;
 import com.shop.store.SingleStore;
-import org.jetbrains.annotations.NotNull;
+
 
 public class Employee {
     private static Employee instance = new Employee();
@@ -20,7 +20,7 @@ public class Employee {
         return instance;
     }
 
-    public static void createSaleOrder(@NotNull Class cls, @NotNull Integer value) {
+    public static void createSaleOrder(Class cls, Integer value) {
         double singlePrice = 0, initialPrice = 0, cost = 0;
         String type = cls.getSimpleName();
         SingleStore tempStore = SingleStore.getSingleStore();
@@ -78,7 +78,7 @@ public class Employee {
 
     }
 
-    public static void createSaleOrder(@NotNull Map<Class, Integer> map) {
+    public static void createSaleOrder(Map<Class, Integer> map) {
         double singlePrice = 0, initialPrice = 0, cost = 0;
         SingleStore tempStore = SingleStore.getSingleStore();
         MultipleItemOrderBuilder itemList = new MultipleItemOrderBuilder();
@@ -91,7 +91,7 @@ public class Employee {
         order.createOrder(map, cost);
     }
 
-    public static void createBuyOrder(@NotNull Class cls,@NotNull Integer value) {
+    public static void createBuyOrder(Class cls,Integer value) {
         double singlePrice = 0, cost = 0;
         String type = cls.getSimpleName();
 
@@ -150,7 +150,7 @@ public class Employee {
         order.createOrder(cls, value, cost);
     }
 
-    public static void createBuyOrder(@NotNull Map<Class, Integer> map) {
+    public static void createBuyOrder(Map<Class, Integer> map) {
         double singlePrice = 0, initialPrice = 0;
 
         MultipleItemOrderBuilder itemList = new MultipleItemOrderBuilder();

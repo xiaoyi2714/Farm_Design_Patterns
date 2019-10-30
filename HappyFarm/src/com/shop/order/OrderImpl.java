@@ -7,7 +7,7 @@ import com.shop.order.state.PaidStatus;
 import com.shop.order.state.UnpaidStatus;
 import com.shop.repository.RepositoryProxy;
 import com.shop.store.SingleStore;
-import org.jetbrains.annotations.NotNull;
+
 import java.util.Map;
 
 public class OrderImpl {
@@ -29,7 +29,7 @@ public class OrderImpl {
     }
 
     //构造函数
-    public OrderImpl(@NotNull String type, @NotNull Map<Class, Integer> orderList, @NotNull Double money){
+    public OrderImpl(String type, Map<Class, Integer> orderList, Double money){
         this.type = type;
         this.orderList = orderList;
         this.money = money;

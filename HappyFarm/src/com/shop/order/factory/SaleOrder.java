@@ -1,7 +1,7 @@
 package com.shop.order.factory;
 
 import com.shop.order.OrderImpl;
-import org.jetbrains.annotations.NotNull;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class SaleOrder implements Order {
 
     //只卖一类物品的订单
-    public void createOrder(@NotNull Class cls, @NotNull Integer value, @NotNull Double earn){
+    public void createOrder(Class cls, Integer value, Double earn){
         Map<Class, Integer> map = new HashMap<>();
         map.put(cls, value);
         OrderImpl order = new OrderImpl("SALE", map, earn);
@@ -26,7 +26,7 @@ public class SaleOrder implements Order {
     }
 
     //卖大于一类物品的订单
-    public void createOrder(@NotNull Map<Class, Integer> map, @NotNull Double earn){
+    public void createOrder(Map<Class, Integer> map, Double earn){
         OrderImpl order = new OrderImpl("SALE", map, earn);
         order.pay();
         if(order.deliverGoods()){
