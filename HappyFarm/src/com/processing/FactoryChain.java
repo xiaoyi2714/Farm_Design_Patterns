@@ -68,4 +68,20 @@ public class FactoryChain implements Process {
         //????????????????????????????????§Õ???
         f.doProcess(request, response, this);
     }
+
+    public boolean addFactory(AbstractProcessingFactory newFactory){
+        if(newFactory!=null){
+            chains.add(newFactory);
+            return true;
+        }
+        else return false;
+    }
+
+    public boolean removeFactory(int index){
+        if(index<chains.size()){
+            chains.remove(index);
+            return true;
+        }
+        else return false;
+    }
 }
