@@ -1,18 +1,18 @@
-package com.processing;
+package processing;
 /**
- * ¼Ó¹¤³§ÖĞµÄ»úÆ÷Àà(Observer)
+ * åŠ å·¥å‚ä¸­çš„æœºå™¨ç±»(Observer)
  * @author linyi
  *
  */
-public class Machine implements Cloneable, Observer {
+public class Machine implements Cloneable, Observer, MachineVisited {
 
-	//»úÆ÷×´Ì¬
+	//æœºå™¨çŠ¶æ€
 	private int state;
 	
-	//PrototypeµÄ¿ËÂ¡º¯Êı
+	//Prototypeçš„å…‹éš†å‡½æ•°
 	public Machine clone() throws CloneNotSupportedException {
 		this.state = 0;
-		System.out.println("»úÆ÷¸´ÖÆ³É¹¦");
+		System.out.println("æœºå™¨å¤åˆ¶æˆåŠŸ");
 		return (Machine) super.clone();
 	}
 
@@ -23,5 +23,10 @@ public class Machine implements Cloneable, Observer {
 	@Override
 	public int getMachineState() {
 		return this.state;
+	}
+
+	@Override
+	public void accept(MachineVisitor visitor) {
+		visitor.visit(this);
 	}
 }

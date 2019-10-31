@@ -1,21 +1,23 @@
-package com.processing;
+package processing;
 /**
- * ³éÏó¹¤³§, ¹Û²ìÕßÄ£Ê½µÄµ÷¶ÈÖĞĞÄ£¬³ÖÓĞStateÄ£Ê½µÄ»·¾³Àà,ÏíÔªÄ£Ê½µÄÖĞĞÄ
+ * æŠ½è±¡å·¥å‚, è§‚å¯Ÿè€…æ¨¡å¼çš„è°ƒåº¦ä¸­å¿ƒï¼ŒæŒæœ‰Stateæ¨¡å¼çš„ç¯å¢ƒç±»,äº«å…ƒæ¨¡å¼çš„ä¸­å¿ƒ
  * @author linyi
  *
  */
 public interface AbstractProcessingFactory {
+
+	/**
+	 * æ·»åŠ ç”Ÿäº§å…·ä½“äº§å“çš„å‡½æ•°
+	 */
 	
-	//Ôö¼Ó»úÆ÷
+	//å¢åŠ æœºå™¨
 	void addMachine();
-	//ÒÆ³ı»úÆ÷
+	//ç§»é™¤æœºå™¨
 	void removeMachine(int index);
-	//»ñÈ¡»úÆ÷µÄ×´Ì¬
+	//è·å–æœºå™¨çš„çŠ¶æ€
 	void getMachinesState();
-	//Éè¶¨»·¾³
+	//è®¾å®šç¯å¢ƒ
 	void setEnvironment(Environment environment);
-	//¸ù¾İÍâ½ç»·¾³À´¿ØÖÆ¹¤³§Ìõ¼ş
+	//æ ¹æ®å¤–ç•Œç¯å¢ƒæ¥æ§åˆ¶å·¥å‚æ¡ä»¶
 	void handle();
-	//
-	void doProcess(Request request, Response response, FactoryChain chain);
 }
