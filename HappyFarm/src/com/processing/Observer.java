@@ -1,12 +1,12 @@
-package com.processing;
+package processing;
 /**
- * ¹Û²ìÕß½Ó¿Ú
+ * è§‚å¯Ÿè€…æ¥å£
  * @author linyi
  *
  */
 public interface Observer {
 
-	//»ñÈ¡»úÆ÷ÔËĞĞ×´Ì¬
+	//è·å–æœºå™¨è¿è¡ŒçŠ¶æ€
 	int getMachineState();
 	
 }

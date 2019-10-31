@@ -1,14 +1,14 @@
-package com.processing;
+package processing;
 /**
- * 抽象状态类
+ * 鎶借薄鐘舵�佺被
  * @author linyi
  *
  */
 abstract public class Environment {
 
-	//工厂中的温度
+	//宸ュ巶涓殑娓╁害
 	private int temperature;
-	//工厂中的湿度
+	//宸ュ巶涓殑婀垮害
 	private int humidity;
 	
 	public Environment(int temperature, int humidity) {
@@ -16,7 +16,7 @@ abstract public class Environment {
 		this.humidity = humidity;
 	}
 	
-	//调用工厂的Handle函数
+	//璋冪敤宸ュ巶鐨凥andle鍑芥暟
 	public abstract void handle(AbstractProcessingFactory abstractProcessingFactory);
 
 	public int getTemperature() {

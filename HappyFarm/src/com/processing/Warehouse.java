@@ -1,4 +1,4 @@
-package com.processing;
+package processing;
 
 public class Warehouse {
     private static Warehouse instance = new Warehouse();
@@ -12,10 +12,10 @@ public class Warehouse {
     }
 
     public void use(int number){
-        ingredientList[number]--;
+        ingredientList[number] = ingredientList[number] - 1;
     }
 
     public void store(int number){
-        productList[number]++;
+        productList[number] = productList[number] + 1;
     }
 }

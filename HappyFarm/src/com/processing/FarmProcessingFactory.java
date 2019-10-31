@@ -1,23 +1,20 @@
-package com.processing;
+package processing;
 
 import java.util.ArrayList;
-
 import java.util.List;
 import java.util.Random;
-import com.shop.repository.*;
-import com.shop.employee.*;
 
 /**
- * ũ��Ʒ�ӹ���(State�Ļ�����)
+ * 农产品加工厂(State的环境类)
  * @author linyi
  *
  */
-public class FarmProcessingFactory extends Produce implements AbstractProcessingFactory {
+public class FarmProcessingFactory implements AbstractProcessingFactory extends Produce {
 
-	//����List
-	private List<Machine> machines;
-	//����״̬
-	private Environment environment;
+	//机器List
+	public List<Machine> machines;
+	//工厂状态
+	public Environment environment;
 	
 	public FarmProcessingFactory() {
 		machines = new ArrayList<>();
@@ -35,19 +32,19 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 
 	@Override
 	public void getMachinesState() {
-		System.out.println("������л���״̬");
+		System.out.println("检查所有机器状态");
 		int size = machines.size();
 		Random random = new Random();
-		//���������ģ������𻵵����
+		//产生随机数模拟机器损坏的情况
 		int index = random.nextInt(size);
 		machines.get(index).setState(1);
 		
 		for(int i = 0;i<size;i++) {
 			int state = machines.get(i).getMachineState();
-			System.out.println("��" + i + "�Ż���״̬:" + state);
-			//������
+			System.out.println("第" + i + "号机器状态:" + state);
+			//机器损坏
 			if(state == 1) {
-				System.out.println("�Ƴ���" + i + "�Ż���");
+				System.out.println("移除第" + i + "号机器");
 				Machine machine = machines.get(i);
 				machines.remove(i);
 				try {
@@ -56,7 +53,7 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 				} catch (CloneNotSupportedException e) {
 					e.printStackTrace();
 				}
-				System.out.println("���ӻ����ɹ�");
+				System.out.println("添加机器成功");
 			}
 		}
 	}
@@ -64,7 +61,7 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 	@Override
 	public void handle() {
 		if(environment == null) {
-			System.out.println("��ָ�������Ļ���");
+			System.out.println("请指定工厂的环境");
 			return;
 		}
 		environment.handle(this);
@@ -76,57 +73,24 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 	}
 
 	@Override
-	String getIngredient(){
-		String ingredient = "小麦";
-		System.out.println("ȡ��ԭ����" + ingredient);
+	int getIngredient(){
+		Random random = new Random();
+		ingredient = random.nextInt(3);
+		Warehouse warehouse = Warehouse.getInstance();
+		warehouse.use(ingredient);
+		System.out.println("取出原材料" + ingredient);
 		return ingredient;
 	}
 
 	@Override
-	String processIngredient(String ingredient){
-		return "面粉";
+	int processIngredient(int ingredient){
+		return ingredient;
 	}
 
 	@Override
-	void storeProduct(String product){
-		RepositoryProxy repository = RepositoryProxy.Instance();
-		repository.add(Flour.class, 1);
-		System.out.println("������������Ʒ" + product);
-	}
-	
-	@Override
-	public void doProcess(Request request, Response response, FactoryChain chain) {
-		switch (request.getRequest()) {
-		case "���": 
-			int wheatnum=request.getRepositoryProxy().checkItemNum(Wheat.class);
-			int reqnum = request.getNum();
-			if(wheatnum>reqnum) {
-				request.getRepositoryProxy().ask(Wheat.class, reqnum);
-				System.out.println("  ");/////////
-				request.getRepositoryProxy().add(Flour.class,reqnum );
-			}
-			else {
-				System.out.println("  ");///////
-			}
-		case "������": 
-			int flournum=request.getRepositoryProxy().checkItemNum(Flour.class);
-			int eggnum = request.getRepositoryProxy().checkItemNum(Egg.class);
-			int reqnum1 = request.getNum();
-			if(flournum>reqnum1) {
-				if(2*eggnum>reqnum1) {
-					request.getRepositoryProxy().ask(Flour.class, reqnum1);
-					request.getRepositoryProxy().ask(Egg.class, 2*reqnum1);
-					System.out.println("  ");
-					request.getRepositoryProxy().add(EggCake.class,reqnum1 );
-				}
-				else {
-					System.out.println("  ");//////��������
-				}
-			}else {
-				System.out.println("  ");/////��۲���
-			}
-		}
-		
-
+	int storeProduct(int product){
+		Warehouse warehouse = Warehouse.getInstance();
+		warehouse.store(product);
+		System.out.println("生产并储存商品" + product);
 	}
 }

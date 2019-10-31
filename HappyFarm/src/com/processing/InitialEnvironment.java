@@ -1,6 +1,6 @@
-package com.processing;
+package processing;
 /**
- * ¹¤³§³õÊ¼»·¾³
+ * å·¥å‚åˆå§‹ç¯å¢ƒ
  * @author linyi
  *
  */
@@ -12,17 +12,17 @@ public class InitialEnvironment extends Environment {
 
 	@Override
 	public void handle(AbstractProcessingFactory abstractProcessingFactory) {
-		System.out.println("¹¤³§Ä¿Ç°Êª¶ÈÎª:"+getHumidity()+"%");
-		System.out.println("¹¤³§Ä¿Ç°ÎÂ¶ÈÎª:"+getTemperature()+"¡æ");
+		System.out.println("å·¥å‚ç›®å‰æ¹¿åº¦ä¸º:"+getHumidity()+"%");
+		System.out.println("å·¥å‚ç›®å‰æ¸©åº¦ä¸º:"+getTemperature()+"â„ƒ");
 		if(getHumidity() > 30) {
-			System.out.println("¹¤³§Êª¶È¹ı¸ß£¬Ğè½µµÍÊª¶È");
+			System.out.println("å·¥å‚æ¹¿åº¦è¿‡é«˜ï¼Œéœ€é™ä½æ¹¿åº¦");
 			setHumidity(15);
-			System.out.println("¹¤³§Êª¶È½µµÍÖÁ20%");
+			System.out.println("å·¥å‚æ¹¿åº¦é™ä½è‡³20%");
 		}
 		if(getTemperature() > 25) {
-			System.out.println("¹¤³§ÎÂ¶È¹ı¸ß£¬Ğè½µµÍÎÂ¶È");
+			System.out.println("å·¥å‚æ¸©åº¦è¿‡é«˜ï¼Œéœ€é™ä½æ¸©åº¦");
 			setTemperature(15);
-			System.out.println("¹¤³§ÎÂ¶È½µµÍÖÁ20¡æ");
+			System.out.println("å·¥å‚æ¸©åº¦é™ä½è‡³20â„ƒ");
 		}
 	}
 }

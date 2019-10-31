@@ -1,15 +1,14 @@
-package com.processing;
+package processing;
 
 public abstract class Produce {
-	
-    abstract String getIngredient();
-    abstract String processIngredient(String ingredient);
-    abstract void storeProduct(String product);
+    abstract int getIngredient();
+    abstract int processIngredient(int ingredient);
+    abstract void storeProduct(int product);
 
-    //ģ�巽��
+    //模板方法
     public final void execute() {
-        String ingredient = getIngredient();
-        String product = processIngredient(ingredient);
+        int ingredient = getIngredient();
+        int product = processIngredient(ingredient);
         storeProduct(product);
     }
 }

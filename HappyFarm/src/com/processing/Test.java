@@ -1,14 +1,14 @@
-package com.processing;
+package processing;
 
 import java.util.Random;
 
 public class Test {
 
 	public static void main(String[] args) throws CloneNotSupportedException {
-		System.out.println("µ¥Ôª²âÊÔ");
+		System.out.println("å•å…ƒæµ‹è¯•");
 		
 		System.out.println("-----------------------");
-		System.out.println("³õÊ¼»¯,³éÏó¹¤³§²âÊÔ");
+		System.out.println("åˆå§‹åŒ–,æŠ½è±¡å·¥å‚æµ‹è¯•");
 		FarmProcessingFactory farmProcessingFactory = new FarmProcessingFactory();
 		PastureProcessingFactory pastureProcessingFactory = new PastureProcessingFactory();
 		for(int i = 0;i<15;i++) {
@@ -21,30 +21,39 @@ public class Test {
 		pastureProcessingFactory.handle();
 		
 		System.out.println("-----------------------");
-		System.out.println("¹Û²ìÕßÄ£Ê½²âÊÔ,Ô­ĞÍÄ£Ê½²âÊÔ");
-		System.out.println("Å©³¡¼Ó¹¤³§»úÆ÷×´Ì¬¼ì²é:");
+		System.out.println("è§‚å¯Ÿè€…æ¨¡å¼æµ‹è¯•,åŸå‹æ¨¡å¼æµ‹è¯•");
+		System.out.println("å†œåœºåŠ å·¥å‚æœºå™¨çŠ¶æ€æ£€æŸ¥:");
 		farmProcessingFactory.getMachinesState();
-		System.out.println("ÄÁ³¡¼Ó¹¤³§»úÆ÷×´Ì¬¼ì²é:");
+		System.out.println("ç‰§åœºåŠ å·¥å‚æœºå™¨çŠ¶æ€æ£€æŸ¥:");
 		pastureProcessingFactory.getMachinesState();
 		
 		System.out.println("-----------------------");
-		System.out.println("×´Ì¬Ä£Ê½²âÊÔ");
+		System.out.println("çŠ¶æ€æ¨¡å¼æµ‹è¯•");
 		Random random = new Random();
 		int temprature = random.nextInt(20) + 10;
 		int humidity = random.nextInt(25) + 10; 
 		farmProcessingFactory.setEnvironment(new InitialEnvironment(temprature, humidity));
-		System.out.println("Å©³¡¼Ó¹¤³§»·¾³¼ì²é:");
+		System.out.println("å†œåœºåŠ å·¥å‚ç¯å¢ƒæ£€æŸ¥:");
 		farmProcessingFactory.handle();
 		temprature = random.nextInt(20) + 10;
 		humidity = random.nextInt(25) + 10; 
 		pastureProcessingFactory.setEnvironment(new InitialEnvironment(temprature, humidity));
-		System.out.println("ÄÁ³¡¼Ó¹¤³§»·¾³¼ì²é:");
+		System.out.println("ç‰§åœºåŠ å·¥å‚ç¯å¢ƒæ£€æŸ¥:");
 		farmProcessingFactory.handle();
 		random = null;
 
 		System.out.println("-----------------------");
-		System.out.println("Ä£°åÄ£Ê½²âÊÔ");
+		System.out.println("æ¨¡æ¿æ¨¡å¼æµ‹è¯•");
 		farmProcessingFactory.execute();
 		pastureProcessingFactory.execute();
+
+		System.out.println("-----------------------");
+		System.out.println("è®¿é—®è€…æ¨¡å¼æµ‹è¯•");
+		System.out.println("å†œåœº0å·æœºå™¨æŸå");
+		farmProcessingFactory.machines.get(0).setState(1);
+		farmProcessingFactory.machines.get(0).accept(new MachineDisplayVisitor());
+		System.out.println("ç‰§åœº13å·æœºå™¨æŸå");
+		pastureProcessingFactory.machines.get(13).setState(1);
+		pastureProcessingFactory.machines.get(13).accept(new MachineDisplayVisitor());
 	}
 }
