@@ -13,7 +13,7 @@ public class OrderFactory {
             case "SALE":
                 return new SaleOrder();
             default:
-                return null;
+                return new NullOrder();
         }
     }
 
