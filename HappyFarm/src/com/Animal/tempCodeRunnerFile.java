@@ -1,1 +1,0 @@
-import Animal.Adapter
