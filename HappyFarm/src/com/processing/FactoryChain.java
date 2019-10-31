@@ -3,69 +3,69 @@ package com.processing;
 import java.util.ArrayList;
 import java.util.List;
 import com.shop.repository.*;
-//封装请求的类Request
+//??????????Request
 class Request {
-	
+
     private String requestStr;
     private int num;
     private RepositoryProxy repositoryProxy;
- 
+
     public String getRequest() {
         return requestStr;
     }
- 
+
     public void setRequest(String request) {
         this.requestStr = request;
     }
     public int getNum() {
-		return num;
-	}
+        return num;
+    }
     public void setNum(int num) {
-		this.num = num;
-	}
+        this.num = num;
+    }
     public RepositoryProxy getRepositoryProxy() {
-		return repositoryProxy;
-	}
+        return repositoryProxy;
+    }
     public void setRepositoryProxy(RepositoryProxy repositoryProxy) {
-		this.repositoryProxy = repositoryProxy;
-	}
-    
+        this.repositoryProxy = repositoryProxy;
+    }
+
 }
 
-//封装响应信息的类Response
+//?????????????Response
 class Response {
-	
+
     private String responseStr;
- 
+
     public String getResponse() {
         return responseStr;
     }
- 
+
     public void setResponse(String response) {
         this.responseStr = response;
     }
-     
+
 }
 
 public class FactoryChain implements Process {
-	
-	private int index;
-	private List<AbstractProcessingFactory> chains;
-	
-	public FactoryChain() {
-		chains = new ArrayList<>();
-	}
-	
+
+    private int index;
+    private List<AbstractProcessingFactory> chains;
+
+    public FactoryChain() {
+        chains = new ArrayList<>();
+    }
+
     @Override
-	public void doProcess(Request request, Response response, FactoryChain chain) {
-	    //index初始化为0,filters.size()为3，不会执行return操作
-	    if(index == chains.size()){
+    public void doProcess(Request request, Response response, FactoryChain chain) {
+        //index??????0,filters.size()?3?????????return????
+        if(index == chains.size()){
             return;
         }
-        //每添加一个过滤规则，index自增1
+        //???????????????index????1
         AbstractProcessingFactory f = chains.get(index);
         index++;
-        //根据索引值获取对应的规律规则对字符串进行处理
-        f.doProcess(request, response, chain);
-	}
+        //????????????????????????????????д???
+        f.doProcess(request, response, this);
+    }
 }

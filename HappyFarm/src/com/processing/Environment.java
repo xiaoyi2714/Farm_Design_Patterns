@@ -1,4 +1,4 @@
-package processing;
+package com.processing;
 /**
  * 抽象状态类
  * @author linyi

@@ -1,4 +1,4 @@
-package processing;
+package com.processing;
 /**
  * 观察者接口
  * @author linyi

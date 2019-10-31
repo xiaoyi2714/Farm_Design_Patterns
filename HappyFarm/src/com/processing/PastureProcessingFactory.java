@@ -1,20 +1,24 @@
-package processing;
+package com.processing;
 
 import java.util.LinkedList;
+
 import java.util.List;
 import java.util.Random;
 
+import com.shop.employee.*;
+import com.shop.repository.*;
+
 /**
- * 牧产品加工厂
+ * ����Ʒ�ӹ���
  * @author linyi
  *
  */
-public class PastureProcessingFactory implements AbstractProcessingFactory extends Produce {
+public class PastureProcessingFactory extends Produce implements AbstractProcessingFactory  {
 	
-	//机器List
-	public List<Machine> machines;
-	//工厂状态状态
-	public Environment environment;
+	//����List
+	private List<Machine> machines;
+	//����״̬״̬
+	private Environment environment;
 	
 	public PastureProcessingFactory() {
 		machines = new LinkedList<>();
@@ -32,19 +36,19 @@ public class PastureProcessingFactory implements AbstractProcessingFactory exten
 
 	@Override
 	public void getMachinesState() {
-		System.out.println("检查所有机器状态");
+		System.out.println("������л���״̬");
 		int size = machines.size();
 		Random random = new Random();
-		//产生随机数模拟机器损坏的情况
+		//���������ģ������𻵵����
 		int index = random.nextInt(size);
 		machines.get(index).setState(1);
 		
 		for(int i = 0;i<size;i++) {
 			int state = machines.get(i).getMachineState();
-			System.out.println("第" + i + "号机器状态:" + state);
-			//机器损坏
+			System.out.println("��" + i + "�Ż���״̬:" + state);
+			//������
 			if(state == 1) {
-				System.out.println("移除第" + i + "号机器");
+				System.out.println("�Ƴ���" + i + "�Ż���");
 				Machine machine = machines.get(i);
 				machines.remove(i);
 				try {
@@ -53,7 +57,7 @@ public class PastureProcessingFactory implements AbstractProcessingFactory exten
 				} catch (CloneNotSupportedException e) {
 					e.printStackTrace();
 				}
-				System.out.println("添加机器成功");
+				System.out.println("���ӻ����ɹ�");
 			}
 		}
 	}
@@ -61,7 +65,7 @@ public class PastureProcessingFactory implements AbstractProcessingFactory exten
 	@Override
 	public void handle() {
 		if(environment == null) {
-			System.out.println("请指定工厂的环境");
+			System.out.println("��ָ�������Ļ���");
 			return;
 		}	
 		environment.handle(this);
@@ -73,24 +77,39 @@ public class PastureProcessingFactory implements AbstractProcessingFactory exten
 	}
 
 	@Override
-	int getIngredient(){
-		Random random = new Random();
-		ingredient = random.nextInt(3);
-		Warehouse warehouse = Warehouse.getInstance();
-		warehouse.use(ingredient);
-		System.out.println("取出原材料" + ingredient);
+	String getIngredient(){
+		String ingredient = "鸡蛋";
+		System.out.println("ȡ��ԭ����" + ingredient);
 		return ingredient;
 	}
 
 	@Override
-	int processIngredient(int ingredient){
-		return ingredient;
+	String processIngredient(String ingredient){
+		return "蛋糕";
 	}
 
 	@Override
-	int storeProduct(int product){
-		Warehouse warehouse = Warehouse.getInstance();
-		warehouse.store(product);
-		System.out.println("取出原材料" + ingredient);
+	void storeProduct(String product){
+		RepositoryProxy repository = RepositoryProxy.Instance();
+		repository.add(EggCake.class, 1);
+		System.out.println("������������Ʒ" + product);
+	}
+
+	@Override
+	public void doProcess(Request request, Response response, FactoryChain chain) {
+		switch (request.getRequest()) {
+			case "���⴮":
+				int chickennum=request.getRepositoryProxy().checkItemNum(Chicken.class);
+				int reqnum = request.getNum();
+				if(chickennum>reqnum) {
+					request.getRepositoryProxy().ask(Chicken.class, reqnum);
+					System.out.println("  ");/////////
+					request.getRepositoryProxy().add(ChickenKebabs.class,reqnum );
+				}
+				else {
+					System.out.println("  ");///////
+				}
+		}
+		chain.doProcess(request, response, chain);
 	}
 }

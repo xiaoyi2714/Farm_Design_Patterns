@@ -1,4 +1,4 @@
-package processing;
+package com.processing;
 /**
  * 工厂初始环境
  * @author linyi

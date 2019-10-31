@@ -1,4 +1,4 @@
-package processing;
+package com.processing;
 /**
  * 加工厂中的机器类(Observer)
  * @author linyi

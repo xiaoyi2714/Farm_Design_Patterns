@@ -1,6 +1,4 @@
-package processing;
-
-import processing.MachineVisitor;
+package com.processing;
 
 public class MachineDisplayVisitor implements MachineVisitor {
     @Override
