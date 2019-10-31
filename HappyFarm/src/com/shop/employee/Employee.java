@@ -12,14 +12,13 @@ import com.shop.store.SingleStore;
 public class Employee {
     private static Employee instance = new Employee();
 
-    public Employee() {
-    }
-
+    public Employee() { }
+    //返回一个员工instance
     public static Employee getEmployee() {
         System.out.println("You have successfully employ someone!");
         return instance;
     }
-
+    //通过员工创建商店出售商品的订单（只包含一类商品）
     public static void createSaleOrder(Class cls, Integer value) {
         double singlePrice = 0, initialPrice = 0, cost = 0;
         String type = cls.getSimpleName();
@@ -77,7 +76,7 @@ public class Employee {
         order.createOrder(cls, value, cost);
 
     }
-
+    //通过员工创建商店出售商品的订单（包含多类商品）
     public static void createSaleOrder(Map<Class, Integer> map) {
         double singlePrice = 0, initialPrice = 0, cost = 0;
         SingleStore tempStore = SingleStore.getSingleStore();
@@ -90,7 +89,7 @@ public class Employee {
         Order order = orderFactory.getOrder("SALE");
         order.createOrder(map, cost);
     }
-
+    //通过员工创建商店进购商品的订单（只包含一类商品）
     public static void createBuyOrder(Class cls,Integer value) {
         double singlePrice = 0, cost = 0;
         String type = cls.getSimpleName();
@@ -149,7 +148,7 @@ public class Employee {
         //创建订单
         order.createOrder(cls, value, cost);
     }
-
+    //通过员工创建商店进购商品的订单（包含多类商品）
     public static void createBuyOrder(Map<Class, Integer> map) {
         double singlePrice = 0, initialPrice = 0;
 

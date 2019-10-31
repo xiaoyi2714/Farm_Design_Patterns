@@ -11,7 +11,7 @@ public class MultipleItemOrderBuilder {
     public void additem(Class cls,Double totalCost){
         items.put(cls,totalCost);
     }
-
+    //输入清单然后返回总价
     public Double getCost(Map<Class, Integer> List){
         Double total = 0.0;
         for(Map.Entry<Class, Integer> entry : List.entrySet()) {

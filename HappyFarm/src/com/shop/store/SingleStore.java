@@ -12,11 +12,11 @@ public class SingleStore implements Store{
     final int ALMOST = 9000;
     final int PROPER = 5000;
     final int EMPTY = 0;
-
+    //获取商店资产
     public Double getProfit() {
         return profit;
     }
-
+    //设定商店资产
     public void setProfit(Double profit) {
         this.profit = profit;
     }
@@ -29,18 +29,18 @@ public class SingleStore implements Store{
     private SingleStore(){};
     //返回一个SingleStore实例,商店起始资金10000.0，没有员工
     //用store不要new，直接SingleStore.getSingleStore();
-
+    //返回一个SingleStore实例
     public static SingleStore getSingleStore(){
         return instance;
     }
-
+    //设定优惠策略
     public void setStrategy(SaleStrategy strategy) {
         this.strategy = strategy;
     }
-    public Double getStrategy(){
-        return ExecuteStrategy.CalculatePrice(instance.strategy,10.0);
-    }
-
+//    public Double getStrategy(){
+////        return ExecuteStrategy.CalculatePrice(instance.strategy,10.0);
+////    }
+    //通过仓库反馈来维护strategy数据成员
     public  void update(){
         int inventory;
         com.shop.repository.RepositoryProxy repo = com.shop.repository.RepositoryProxy.Instance();
