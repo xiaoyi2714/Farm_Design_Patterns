@@ -3,11 +3,7 @@ package com.pasture.Decorator;
 import com.pasture.Sheep;
 
 public class BlueWoolDecorator extends WoolDecorator {
- 
-    public BlueWoolDecorator(Sheep sheep, int quantity) {
-        super(sheep, quantity);
-    }
- 
+    
     @Override
     public void shearing(Sheep sheep, int quantity) {
         NormalWool normalWool = new NormalWool();

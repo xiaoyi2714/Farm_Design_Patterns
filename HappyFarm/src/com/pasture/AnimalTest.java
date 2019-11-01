@@ -7,6 +7,7 @@ import com.pasture.Facade.*;
 import com.pasture.Factory.*;
 import com.pasture.Observer.*;
 import com.pasture.Strategy.*;
+import com.pasture.Interpreter.*;
 
 public class AnimalTest {
     public static  void main(String[] args) {
@@ -43,10 +44,12 @@ public class AnimalTest {
 
         System.out.println("-------------Bridge Text-------------");
         System.out.println("Let the cat to yell 3 times..");
-        AnimalYell catYell = new AnimalYell(new CatYell(), 3);
+        AnimalYell catYell = new AnimalYell(new CatYell());
+        catYell.yell(3);
 
         System.out.println("Let the sheep to yell 2 times..");
-        AnimalYell sheepYell = new AnimalYell(new SheepYell(), 2);
+        AnimalYell sheepYell = new AnimalYell(new SheepYell());
+        sheepYell.yell(2);
 
 
 
@@ -54,16 +57,16 @@ public class AnimalTest {
         Animal sheep2 = factoryDemo.run("Sheep");
         Animal sheep3 = factoryDemo.run("Sheep");
 
-        Wool wool = new Wool();
-        WoolDecorator redWool = new RedWoolDecorator((Sheep)sheep2, 0);
-        WoolDecorator blueWool = new BlueWoolDecorator((Sheep)sheep3, 0);
+        Wool wool = new NormalWool();
+        WoolDecorator redWool = new RedWoolDecorator();
+        WoolDecorator blueWool = new BlueWoolDecorator();
 
         System.out.println("Get 3 normal wool from sheep1..");
-        wool.shearing((Sheep) sheep, 3);
-        System.out.println("Get 2 red wool from sheep1..");
-        wool.shearing((Sheep)sheep2, 2);
-        System.out.println("Get 4 blue wool from sheep1..");
-        wool.shearing((Sheep)sheep3, 4);
+        wool.shearing((Sheep)sheep, 3);
+        System.out.println("Get 2 red wool from sheep2..");
+        redWool.shearing((Sheep)sheep2, 2);
+        System.out.println("Get 4 blue wool from sheep3..");
+        blueWool.shearing((Sheep)sheep3, 4);
 
 
 
@@ -79,8 +82,16 @@ public class AnimalTest {
         System.out.println("-------------Facade Text-------------");
         Toilet toilet = new Toilet();
         toilet.pooForCat(2);
-        toilet.pooForChicken(1);   
+        toilet.pooForChicken(1);
 
 
+
+        System.out.println("-------------Interpreter Text-------------");
+        Expression oneLivestock = Interpreter.getLivestockExpression();
+        Expression allLivestock = Interpreter.getAllLivestockExpression();
+
+        System.out.println("Chicken is livestock? " + oneLivestock.interpret("Chicken"));
+        System.out.println("Sheep and chicken are all the livestock in pasture? "
+                + allLivestock.interpret("Sheep Chicken"));
     }
 }

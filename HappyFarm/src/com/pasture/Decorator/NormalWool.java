@@ -2,7 +2,7 @@ package com.pasture.Decorator;
 
 import com.pasture.Sheep;
 
-public class NormalWool extends Wool {
+public class NormalWool implements Wool {
  
     @Override
     public void shearing(Sheep sheep, int quantity) {
@@ -11,7 +11,6 @@ public class NormalWool extends Wool {
             return;
         }
         sheep.wool = sheep.wool - quantity;
-        //item加入wool
         System.out.println("Having gotten " + quantity 
         + "wool from sheep (id: " + sheep.id + ")!");
     }

@@ -18,6 +18,6 @@ public class Toilet {
         chickenPoo.poo(quantity);
     }
     public void pooForSheep(int quantity) {
-        chickenPoo.poo(quantity);
+        sheepPoo.poo(quantity);
     }
 }
