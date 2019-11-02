@@ -40,25 +40,22 @@ public class FarmManager {
 		Plant newPlant=PlantFactory.getAPlant(seedClass);
 
 		if (newPlant==null){
-			System.out.println("尝试在"+fieldIndex+
-					"号田种下一个不认识的植物。种植结果：失败");
+			System.out.println("Fail planting");
 			return false;
 		}
 		if(stock.exeACommand(new QueryItemCommand(),seedClass)<=0) {
-    		System.out.println("尝试在"+fieldIndex+
-					"号田种下一个" + newPlant.getName()+
-					"。种植结果：种子不足");
+    		System.out.println("Fail planting seed not enough");
     		return false;
     	}
     	if (field.addPlant(newPlant, fieldIndex)>=0){
     		
-    		System.out.println("成功在"+fieldIndex+
-    							"号田种下一个" + newPlant.getName()+"。");
+    		System.out.println("On "+fieldIndex+
+    							" plant a new " + newPlant.getName()+".");
 			stock.exeACommand(new DelItemCommand(),seedClass);
     		return true;
     	}
     	else {
-    		System.out.println("尝试在"+fieldIndex+"号田种植种子。种植失败：这块田已有植物");
+    		System.out.println("There is already a plant");
     	}
     	return false;
     }
@@ -68,15 +65,15 @@ public class FarmManager {
     public void showAllPlants()
     {
     	System.out.println();
-    	System.out.println("我们的农田：");
+    	System.out.println("Our field:");
     	if (field.getNumPlants()==0) {
-    		System.out.println("空");
+    		System.out.println("empty");
     	}
     	for (int i=0;i<field.getNumFields();i++) {
     		Plant temp = field.getPlantByField(i);
     		if (temp!=null) {
-    			System.out.println("第" + i + "块田种着" + 
-    							temp.getName() + ",成长值为"
+    			System.out.println("No." + i + " field" +
+    							temp.getName() + ", growth"
     							+ temp.getPresentGrowth() + "/" 
     							+ temp.getMaxGrowth() + ".");
     		}
@@ -96,28 +93,24 @@ public class FarmManager {
     {	
     	Plant plantToGive=field.getPlantByField(fieldIndex);
     	if (plantToGive==null) {
-    		System.out.println("尝试为"+fieldIndex+
-    				"号田施肥（"+cls.getSimpleName()+"）。施肥结果：这块田没有植物，无法施肥");
+    		System.out.println("Try to give No."+fieldIndex+
+    				" field "+cls.getSimpleName()+"), fail.");
     		return false;
     	}
     	
     	if (plantToGive.getPresentGrowth() >= plantToGive.getMaxGrowth()) {
-    		System.out.println("尝试为"+fieldIndex+ 
-    							"号田的植物——"+plantToGive.getName()+"施肥（"+
-								cls.getSimpleName()+"）。施肥结果：该植株已成熟，无需施肥");
+    		System.out.println("Fail to give fertilizer.");
     		return false;
     	}
     	
     	if (stock.exeACommand(new QueryItemCommand(),cls)<=0) {
-    		System.out.println("尝试为"+fieldIndex+ 
-					"号田的植物——"+plantToGive.getName()+"施肥（"+
-					cls.getSimpleName()+"）。施肥结果：你没有对应的肥料。");
+    		System.out.println("Fail, fertilizer not enough.");
     		return false;
     	}
     	plantToGive.grow(FertilizerGrowthParser.FertilizerToGrowth(cls));
-    	System.out.println("为"+fieldIndex+
-    						"号田的植物——"+plantToGive.getName()+
-    						"施肥（"+cls.getSimpleName()+"），增加成长值"+FertilizerGrowthParser.FertilizerToGrowth(cls)+"，该植物成长值"+plantToGive.getPresentGrowth()+
+    	System.out.println("No."+fieldIndex+
+    						" field, "+plantToGive.getName()+
+    						"give "+cls.getSimpleName()+"), grow "+FertilizerGrowthParser.FertilizerToGrowth(cls)+", present"+plantToGive.getPresentGrowth()+
     						"/"+plantToGive.getMaxGrowth()+"。");
 		stock.exeACommand(new DelItemCommand(),cls);
     	return true;
@@ -128,16 +121,16 @@ public class FarmManager {
 		Plant p = field.getPlantByField(fieldIndex);
 
     	if (p==null) {
-    		System.out.println("尝试收割第"+fieldIndex+"块田：无法收割，这里没有植物");
+    		System.out.println("Fail, no plant here.");
     		return null;
     	}
     	else if (p.getPresentGrowth() < p.getMaxGrowth()) {
-			System.out.println("尝试收割第"+fieldIndex+"块田：植物尚未成熟");
+			System.out.println("Fail, not mature plant");
 			return null;
 		}
 
 		field.harvest(fieldIndex);
-    	System.out.println("成功收割第"+fieldIndex+"块田的"+p.getName());
+    	System.out.println("Harvest: No."+fieldIndex+" field, "+p.getName());
 
     	stock.exeACommand(new AddItemCommand(),ProductFactory.getProductionClass(p.getClass()));
     	return p;
@@ -147,29 +140,29 @@ public class FarmManager {
 	public FieldMemento saveFieldStatus()
 	{
 		System.out.println();
-		System.out.println("开始储存此时农田状态");
+		System.out.println("Saving memento:");
 		showAllPlants();
 		FieldMemento m = field.save();
 		if (m!=null) {
-			System.out.println("备份已保存。");
+			System.out.println("Success.");
 			System.out.println();
 			return m;
 		}
 		else{
-			System.out.println("备份失败。");
+			System.out.println("Fail.");
 			System.out.println();
 			return null;
 		}
 	}
 	//提供接口调用备忘录恢复
 	public void restore(int index) {
-		System.out.println("开始恢复第" + index + "次的农田备份。");
+		System.out.println("Restoring No." + index + " memento.");
 		FieldMemento m = FieldMementoManager.getInstance().getMemento(index);
 		if (m!=null) {
 			field.restore(m);
 		}
 		showAllPlants();
-		System.out.println("已拔掉所有在那之后种的植物，完成恢复。");
+		System.out.println("Succeed.");
 	}
 	//提供接口展示所有
 	public void showAllFieldMementos()

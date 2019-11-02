@@ -3,7 +3,7 @@ package com.farm;
 class CornPlant implements Plant{
 	private int presentGrowth=0;
     private final static int maxGrowth=120;
-    private final static String name="玉米植株";
+    private final static String name="Corn Plant";
 
     @Override
     public void grow(int num)
