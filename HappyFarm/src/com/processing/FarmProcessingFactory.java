@@ -97,7 +97,7 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 	@Override
 	public void doProcess(Request request, Response response, FactoryChain chain) {
 		switch (request.getRequest()) {
-			case "���":
+			case "Wheat":
 				int wheatnum=request.getRepositoryProxy().checkItemNum(Wheat.class);
 				int reqnum = request.getNum();
 				if(wheatnum>reqnum) {
@@ -108,7 +108,7 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 				else {
 					System.out.println("  ");///////
 				}
-			case "������":
+			case "Eggcake":
 				int flournum=request.getRepositoryProxy().checkItemNum(Flour.class);
 				int eggnum = request.getRepositoryProxy().checkItemNum(Egg.class);
 				int reqnum1 = request.getNum();

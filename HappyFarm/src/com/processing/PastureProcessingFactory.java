@@ -98,7 +98,7 @@ public class PastureProcessingFactory extends Produce implements AbstractProcess
 	@Override
 	public void doProcess(Request request, Response response, FactoryChain chain) {
 		switch (request.getRequest()) {
-			case "���⴮":
+			case "ChickenKebabs":
 				int chickennum=request.getRepositoryProxy().checkItemNum(Chicken.class);
 				int reqnum = request.getNum();
 				if(chickennum>reqnum) {
