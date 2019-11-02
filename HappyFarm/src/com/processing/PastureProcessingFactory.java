@@ -8,16 +8,11 @@ import java.util.Random;
 import com.shop.employee.*;
 import com.shop.repository.*;
 
-/**
- * ����Ʒ�ӹ���
- * @author linyi
- *
- */
 public class PastureProcessingFactory extends Produce implements AbstractProcessingFactory  {
 	
-	//����List
-	private List<Machine> machines;
-	//����״̬״̬
+	//Machine List
+	private List<Machine> machines
+	//Factory's Environment
 	private Environment environment;
 	
 	public PastureProcessingFactory() {
@@ -36,19 +31,17 @@ public class PastureProcessingFactory extends Produce implements AbstractProcess
 
 	@Override
 	public void getMachinesState() {
-		System.out.println("������л���״̬");
+		System.out.println("check machines' state̬");
 		int size = machines.size();
 		Random random = new Random();
-		//���������ģ������𻵵����
 		int index = random.nextInt(size);
 		machines.get(index).setState(1);
 		
 		for(int i = 0;i<size;i++) {
 			int state = machines.get(i).getMachineState();
-			System.out.println("��" + i + "�Ż���״̬:" + state);
-			//������
+			System.out.println("NO." + i + "machine's state:" + state);
 			if(state == 1) {
-				System.out.println("�Ƴ���" + i + "�Ż���");
+				System.out.println("remove NO." + i + "machine");
 				Machine machine = machines.get(i);
 				machines.remove(i);
 				try {
@@ -57,7 +50,7 @@ public class PastureProcessingFactory extends Produce implements AbstractProcess
 				} catch (CloneNotSupportedException e) {
 					e.printStackTrace();
 				}
-				System.out.println("���ӻ����ɹ�");
+				System.out.println("successfully added machine");
 			}
 		}
 	}
@@ -65,7 +58,7 @@ public class PastureProcessingFactory extends Produce implements AbstractProcess
 	@Override
 	public void handle() {
 		if(environment == null) {
-			System.out.println("��ָ�������Ļ���");
+			System.out.println("please initialize factory's environment");
 			return;
 		}	
 		environment.handle(this);
@@ -78,21 +71,21 @@ public class PastureProcessingFactory extends Produce implements AbstractProcess
 
 	@Override
 	String getIngredient(){
-		String ingredient = "鸡蛋";
-		System.out.println("ȡ��ԭ����" + ingredient);
+		String ingredient = "Egg";
+		System.out.println("Successfully access the ingredient: " + ingredient);
 		return ingredient;
 	}
 
 	@Override
 	String processIngredient(String ingredient){
-		return "蛋糕";
+		return "EggCake";
 	}
 
 	@Override
 	void storeProduct(String product){
 		RepositoryProxy repository = RepositoryProxy.Instance();
 		repository.add(EggCake.class, 1);
-		System.out.println("������������Ʒ" + product);
+		System.out.println("Successfully produce and store the product: " + product);
 	}
 
 	@Override

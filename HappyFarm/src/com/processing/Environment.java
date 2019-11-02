@@ -1,14 +1,8 @@
 package com.processing;
-/**
- * 抽象状态类
- * @author linyi
- *
- */
+
 abstract public class Environment {
 
-	//工厂中的温度
 	private int temperature;
-	//工厂中的湿度
 	private int humidity;
 	
 	public Environment(int temperature, int humidity) {
@@ -16,7 +10,7 @@ abstract public class Environment {
 		this.humidity = humidity;
 	}
 	
-	//调用工厂的Handle函数
+	//invoke factory's handle()
 	public abstract void handle(AbstractProcessingFactory abstractProcessingFactory);
 
 	public int getTemperature() {

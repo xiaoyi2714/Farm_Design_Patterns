@@ -1,24 +1,15 @@
 package com.processing;
-/**
- * 抽象工厂, 观察者模式的调度中心，持有State模式的环境类,享元模式的中心
- * @author linyi
- *
- */
-public interface AbstractProcessingFactory {
 
-	/**
-	 * 添加生产具体产品的函数
-	 */
-	
-	//增加机器
+public interface AbstractProcessingFactory {
+	//add machine
 	void addMachine();
-	//移除机器
+	//remove machine
 	void removeMachine(int index);
-	//获取机器的状态
+	//get machines' state
 	void getMachinesState();
-	//设定环境
+	//set environment
 	void setEnvironment(Environment environment);
-	//根据外界环境来控制工厂条件
+	//control factory's environment
 	void handle();
 	void doProcess(Request request, Response response, FactoryChain chain);
 }

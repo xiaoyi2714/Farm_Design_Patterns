@@ -1,9 +1,5 @@
 package com.processing;
-/**
- * 加工厂中的机器类(Observer)
- * @author linyi
- *
- */
+
 public class Machine implements Cloneable, Observer, MachineVisited {
 
 	//机器状态
@@ -12,7 +8,7 @@ public class Machine implements Cloneable, Observer, MachineVisited {
 	//Prototype的克隆函数
 	public Machine clone() throws CloneNotSupportedException {
 		this.state = 0;
-		System.out.println("机器复制成功");
+		System.out.println("successfully cloned machine");
 		return (Machine) super.clone();
 	}
 

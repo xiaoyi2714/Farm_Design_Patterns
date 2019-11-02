@@ -1,9 +1,5 @@
 package com.processing;
-/**
- * 工厂初始环境
- * @author linyi
- *
- */
+
 public class InitialEnvironment extends Environment {
 
 	public InitialEnvironment(int temperature, int humidity) {
@@ -12,17 +8,17 @@ public class InitialEnvironment extends Environment {
 
 	@Override
 	public void handle(AbstractProcessingFactory abstractProcessingFactory) {
-		System.out.println("工厂目前湿度为:"+getHumidity()+"%");
-		System.out.println("工厂目前温度为:"+getTemperature()+"℃");
+		System.out.println("current humidity:"+getHumidity()+"%");
+		System.out.println("current temperature:"+getTemperature()+"℃");
 		if(getHumidity() > 30) {
-			System.out.println("工厂湿度过高，需降低湿度");
+			System.out.println("humidity is too high");
 			setHumidity(15);
-			System.out.println("工厂湿度降低至20%");
+			System.out.println("humidity decreased to 15%");
 		}
 		if(getTemperature() > 25) {
-			System.out.println("工厂温度过高，需降低温度");
+			System.out.println("temperature is too high");
 			setTemperature(15);
-			System.out.println("工厂温度降低至20℃");
+			System.out.println("temperature decreased to 15%℃");
 		}
 	}
 }
