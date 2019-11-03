@@ -1,10 +1,15 @@
 package com.pasture.Decorator;
 
-import com.pasture.Sheep;
+import com.pasture.Animal;
 
 public abstract class WoolDecorator implements Wool {
-    @Override
-    public void shearing(Sheep sheep, int quantity){
-        System.out.println("Error: Do not implement specific decorator!");
+    protected Wool decoratedWool;
+
+    public WoolDecorator(Wool decoratedWool) {
+        this.decoratedWool = decoratedWool;
+    }
+
+    public String getDescription(){
+        return decoratedWool.getDescription();
     }
 }

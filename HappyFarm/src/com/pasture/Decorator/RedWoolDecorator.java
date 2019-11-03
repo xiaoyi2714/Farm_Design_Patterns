@@ -1,17 +1,14 @@
 package com.pasture.Decorator;
 
-import com.pasture.Sheep;
+import com.pasture.Animal;
 
 public class RedWoolDecorator extends WoolDecorator {
+    public RedWoolDecorator(Wool decoratedWool) {
+        super(decoratedWool);
+    }
 
     @Override
-    public void shearing(Sheep sheep, int quantity) {
-        NormalWool normalWool = new NormalWool();
-        normalWool.shearing(sheep, quantity);         
-        dyeRedWool(quantity);
-    }
- 
-    private void dyeRedWool(int quantity){
-        System.out.println("Having dyed " + quantity + "wool into red color successfully!");
+    public String getDescription() {
+        return decoratedWool.getDescription() + "\n____And it has been set to red now.";
     }
 }

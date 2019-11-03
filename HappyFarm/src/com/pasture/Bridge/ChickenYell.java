@@ -1,10 +1,7 @@
 package com.pasture.Bridge;
 
-public class ChickenYell implements YellAPI {
-    @Override
-    public void animalYell(int time) {
-        for (int i = 0; i < time; i++) {
-            System.out.println("jiiiiiiiiiijijiiiiii");
-        }
+public class ChickenYell extends AnimalYell {
+    public void yell() {
+        yellTimes.yellSomeTimes("jiiiiiiiiiijijiiiiii");
     }
 }

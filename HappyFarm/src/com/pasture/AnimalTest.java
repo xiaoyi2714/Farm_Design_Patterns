@@ -11,15 +11,15 @@ import com.pasture.Interpreter.*;
 
 public class AnimalTest {
     public static  void main(String[] args) {
-        FactoryDemo factoryDemo = new FactoryDemo();
+        AnimalFactory animalFactory = new AnimalFactory();
         System.out.println("-------------Factory Text-------------");
-        Animal cat = factoryDemo.run("Cat");
-        Animal sheep = factoryDemo.run("Sheep");
-        Animal chicken = factoryDemo.run("Chicken");
+        Animal cat = animalFactory.run("Cat");
+        Animal sheep = animalFactory.run("Sheep");
+        Animal chicken = animalFactory.run("Chicken");
 
 
 
-        System.out.println("-------------Strategy Text-------------");
+        System.out.println("\n\n-------------Strategy Text-------------");
         Interaction sing = new Interaction(new Sing());
         sing.executeInteraction(cat, sheep);
 
@@ -31,7 +31,7 @@ public class AnimalTest {
 
 
 
-        System.out.println("-------------Observer Text-------------");
+        System.out.println("\n\n-------------Observer Text-------------");
         AnimalMonitor monitor = new AnimalMonitor();
 
         new WarningLight(monitor);
@@ -42,51 +42,65 @@ public class AnimalTest {
 
 
 
-        System.out.println("-------------Bridge Text-------------");
+        System.out.println("\n\n-------------Bridge Text-------------");
         System.out.println("Let the cat to yell 3 times..");
-        AnimalYell catYell = new AnimalYell(new CatYell());
-        catYell.yell(3);
+        AnimalYell catYell = new CatYell();
+        YellTimes yellThreeTimes = new YellThreeTimes();
+        catYell.setYellTimes(yellThreeTimes);
+        catYell.yell();
 
         System.out.println("Let the sheep to yell 2 times..");
-        AnimalYell sheepYell = new AnimalYell(new SheepYell());
-        sheepYell.yell(2);
+        AnimalYell sheepYell = new SheepYell();
+        YellTimes yellTwiceTimes = new YellTwiceTimes();
+        sheepYell.setYellTimes(yellTwiceTimes);
+        sheepYell.yell();
 
 
 
-        System.out.println("-------------Decorator Text-------------");
-        Animal sheep2 = factoryDemo.run("Sheep");
-        Animal sheep3 = factoryDemo.run("Sheep");
+        System.out.println("\n\n-------------Decorator Text-------------");
+        Animal sheep2 = animalFactory.run("Sheep");
 
-        Wool wool = new NormalWool();
-        WoolDecorator redWool = new RedWoolDecorator();
-        WoolDecorator blueWool = new BlueWoolDecorator();
+        System.out.println("Start getting 3 normal wool from sheep (id: " + sheep.id + ").");
+        Wool normalWool = ((Sheep) sheep).beSheared(3, "Normal");
+        System.out.println("Now start dyeing...");
+        System.out.println(
+                new GreenWoolDecorator(
+                    new BlueWoolDecorator(
+                            new RedWoolDecorator(normalWool)
+                    )
+                ).getDescription()
+        );
 
-        System.out.println("Get 3 normal wool from sheep1..");
-        wool.shearing((Sheep)sheep, 3);
-        System.out.println("Get 2 red wool from sheep2..");
-        redWool.shearing((Sheep)sheep2, 2);
-        System.out.println("Get 4 blue wool from sheep3..");
-        blueWool.shearing((Sheep)sheep3, 4);
+        System.out.println("\nStart getting 3 long wool from sheep (id: " + sheep2.id + ").");
+        Wool longWool = ((Sheep) sheep2).beSheared(3, "Normal");
+        System.out.println("Now start dyeing...");
+        System.out.println(
+                new RedWoolDecorator(
+                        new BlueWoolDecorator(
+                                new GreenWoolDecorator(longWool)
+                        )
+                ).getDescription()
+        );
 
 
-
-        System.out.println("-------------Adapter Text-------------");
-        NormalEat normalEat = new NormalEat();
+        System.out.println("\n\n-------------Adapter Text-------------");
+        GrassEat grassEat = new GrassEat();
         //考虑一种食物够 一种食物不够的情况
-        normalEat.eat(cat);
-        normalEat.eat(chicken);
-        normalEat.eat(sheep);
+        grassEat.eat("Grass", sheep);
+        grassEat.eat("Normal", cat);
+        grassEat.eat("Normal", chicken);
 
 
 
-        System.out.println("-------------Facade Text-------------");
-        Toilet toilet = new Toilet();
-        toilet.pooForCat(2);
-        toilet.pooForChicken(1);
+        System.out.println("\n\n-------------Facade Text-------------");
+        AnimalPooMaker animalPooMaker = new AnimalPooMaker();
+        animalPooMaker.pooForCat(2);
+        animalPooMaker.pooForChicken(1);
+        animalPooMaker.pooForSheep(1);
 
 
 
-        System.out.println("-------------Interpreter Text-------------");
+        System.out.println("\n\n-------------Interpreter Text-------------");
         Expression oneLivestock = Interpreter.getLivestockExpression();
         Expression allLivestock = Interpreter.getAllLivestockExpression();
 

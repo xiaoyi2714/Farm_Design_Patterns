@@ -1,17 +1,15 @@
 package com.pasture.Decorator;
 
-import com.pasture.Sheep;
+import com.pasture.Animal;
 
 public class NormalWool implements Wool {
- 
+    private int quantity;
+    public NormalWool(int quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
-    public void shearing(Sheep sheep, int quantity) {
-        if (sheep.wool < quantity) {
-            System.out.println("Too much wool needed to be sheared!");
-            return;
-        }
-        sheep.wool = sheep.wool - quantity;
-        System.out.println("Having gotten " + quantity 
-        + "wool from sheep (id: " + sheep.id + ")!");
+    public String getDescription() {
+        return String.format("This is %d normal wool ", this.quantity);
     }
 }

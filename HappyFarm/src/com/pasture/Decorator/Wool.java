@@ -1,7 +1,7 @@
 package com.pasture.Decorator;
 
-import com.pasture.Sheep;
+import com.pasture.Animal;
 
 public interface Wool {
-    public void shearing(Sheep sheep, int quantity);
+    String getDescription();
 }

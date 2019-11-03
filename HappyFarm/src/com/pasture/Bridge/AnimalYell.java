@@ -1,13 +1,12 @@
 package com.pasture.Bridge;
 
-public class AnimalYell {
-    private YellAPI yellAPI;
- 
-    public AnimalYell(YellAPI yellAPI) {
-        this.yellAPI = yellAPI;
+public abstract class AnimalYell {
+
+    protected YellTimes yellTimes;
+
+    public void setYellTimes(YellTimes yellTimes) {
+        this.yellTimes = yellTimes;
     }
- 
-    public void yell(int time) {
-        yellAPI.animalYell(time);
-    }
+
+    public abstract void yell();
 }

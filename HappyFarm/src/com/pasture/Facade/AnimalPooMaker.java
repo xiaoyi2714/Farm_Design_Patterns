@@ -1,23 +1,23 @@
 package com.pasture.Facade;
 
-public class Toilet {
+public class AnimalPooMaker {
     private AnimalPoo catPoo;
     private AnimalPoo chickenPoo;
     private AnimalPoo sheepPoo;
  
-    public Toilet() {
+    public AnimalPooMaker() {
         catPoo = new CatPoo();
         chickenPoo = new ChickenPoo();
         sheepPoo = new SheepPoo();
     }
  
     public void pooForCat(int quantity) {
-        catPoo.poo(quantity);
+        catPoo.run(quantity);
     }
     public void pooForChicken(int quantity) {
-        chickenPoo.poo(quantity);
+        chickenPoo.run(quantity);
     }
     public void pooForSheep(int quantity) {
-        sheepPoo.poo(quantity);
+        sheepPoo.run(quantity);
     }
 }

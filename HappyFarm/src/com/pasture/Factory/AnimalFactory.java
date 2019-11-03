@@ -6,7 +6,7 @@ import com.pasture.Sheep;
 import com.pasture.Cat;
 import com.pasture.Chicken;
 
-public class FactoryDemo {
+public class AnimalFactory {
     public int id = 0;
 
     public Animal run(String type) {
