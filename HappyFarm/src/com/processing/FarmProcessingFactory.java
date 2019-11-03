@@ -10,7 +10,7 @@ import com.shop.employee.*;
 public class FarmProcessingFactory extends Produce implements AbstractProcessingFactory {
 
 	//Machines List
-	private List<Machine> machines;
+	public List<Machine> machines;
 	//factory's environment
 	private Environment environment;
 	
@@ -91,32 +91,32 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 	public void doProcess(Request request, Response response, FactoryChain chain) {
 		switch (request.getRequest()) {
 			case "Wheat":
-				int wheatnum=request.getRepositoryProxy().checkItemNum(Wheat.class);
-				int reqnum = request.getNum();
-				if(wheatnum>reqnum) {
-					request.getRepositoryProxy().ask(Wheat.class, reqnum);
-					System.out.println("  ");/////////
-					request.getRepositoryProxy().add(Flour.class,reqnum );
+				int wheatNum=request.getRepositoryProxy().checkItemNum(Wheat.class);
+				int reqNum = request.getNum();
+				if(wheatNum>reqNum) {
+					request.getRepositoryProxy().ask(Wheat.class, reqNum);
+					System.out.println(reqNum+ " Flour Produced.");/////////
+					request.getRepositoryProxy().add(Flour.class,reqNum );
 				}
 				else {
-					System.out.println("  ");///////
+					System.out.println("Not enough wheat.");///////
 				}
 			case "Eggcake":
-				int flournum=request.getRepositoryProxy().checkItemNum(Flour.class);
-				int eggnum = request.getRepositoryProxy().checkItemNum(Egg.class);
-				int reqnum1 = request.getNum();
-				if(flournum>reqnum1) {
-					if(2*eggnum>reqnum1) {
-						request.getRepositoryProxy().ask(Flour.class, reqnum1);
-						request.getRepositoryProxy().ask(Egg.class, 2*reqnum1);
-						System.out.println("  ");
-						request.getRepositoryProxy().add(EggCake.class,reqnum1 );
+				int flourNum=request.getRepositoryProxy().checkItemNum(Flour.class);
+				int eggNum = request.getRepositoryProxy().checkItemNum(Egg.class);
+				int reqNum1 = request.getNum();
+				if(flourNum>reqNum1) {
+					if(2*eggNum>reqNum1) {
+						request.getRepositoryProxy().ask(Flour.class, reqNum1);
+						request.getRepositoryProxy().ask(Egg.class, 2*reqNum1);
+						System.out.println(reqNum+ " EggCake Produced.");
+						request.getRepositoryProxy().add(EggCake.class,reqNum1 );
 					}
 					else {
-						System.out.println("  ");//////????????
+						System.out.println("Not enough eggs.");//////��������
 					}
 				}else {
-					System.out.println("  ");/////??????
+					System.out.println("Not enough flour.");/////��۲���
 				}
 		}
 		chain.doProcess(request, response, chain);

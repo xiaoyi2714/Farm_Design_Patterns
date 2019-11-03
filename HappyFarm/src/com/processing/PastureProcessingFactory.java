@@ -11,7 +11,7 @@ import com.shop.repository.*;
 public class PastureProcessingFactory extends Produce implements AbstractProcessingFactory  {
 	
 	//Machine List
-	private List<Machine> machines
+	public List<Machine> machines;
 	//Factory's Environment
 	private Environment environment;
 	
@@ -92,15 +92,15 @@ public class PastureProcessingFactory extends Produce implements AbstractProcess
 	public void doProcess(Request request, Response response, FactoryChain chain) {
 		switch (request.getRequest()) {
 			case "ChickenKebabs":
-				int chickennum=request.getRepositoryProxy().checkItemNum(Chicken.class);
-				int reqnum = request.getNum();
-				if(chickennum>reqnum) {
-					request.getRepositoryProxy().ask(Chicken.class, reqnum);
-					System.out.println("  ");/////////
-					request.getRepositoryProxy().add(ChickenKebabs.class,reqnum );
+				int chickenNum=request.getRepositoryProxy().checkItemNum(Chicken.class);
+				int reqNum = request.getNum();
+				if(chickenNum>reqNum) {
+					request.getRepositoryProxy().ask(Chicken.class, reqNum);
+					System.out.println(reqNum+ " ChickenKebabs Produced.");/////////
+					request.getRepositoryProxy().add(ChickenKebabs.class,reqNum );
 				}
 				else {
-					System.out.println("  ");///////
+					System.out.println("Not enough chicken.");///////
 				}
 		}
 		chain.doProcess(request, response, chain);
