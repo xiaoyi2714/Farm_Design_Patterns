@@ -17,6 +17,7 @@ public class MultipleItemOrderBuilder {
         for(Map.Entry<Class, Integer> entry : List.entrySet()) {
             Double cost = 0.0;
             String mapKey = entry.getKey().getSimpleName();
+            System.out.println("We use " + mapKey + " to build the order!");
             Integer mapValue = entry.getValue();
             switch(mapKey){
                 case "Potato": {

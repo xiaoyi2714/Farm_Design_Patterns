@@ -3,49 +3,6 @@ package com.processing;
 import java.util.ArrayList;
 import java.util.List;
 import com.shop.repository.*;
-//??????????Request
-class Request {
-
-    private String requestStr;
-    private int num;
-    private RepositoryProxy repositoryProxy;
-
-    public String getRequest() {
-        return requestStr;
-    }
-
-    public void setRequest(String request) {
-        this.requestStr = request;
-    }
-    public int getNum() {
-        return num;
-    }
-    public void setNum(int num) {
-        this.num = num;
-    }
-    public RepositoryProxy getRepositoryProxy() {
-        return repositoryProxy;
-    }
-    public void setRepositoryProxy(RepositoryProxy repositoryProxy) {
-        this.repositoryProxy = repositoryProxy;
-    }
-
-}
-
-//?????????????Response
-class Response {
-
-    private String responseStr;
-
-    public String getResponse() {
-        return responseStr;
-    }
-
-    public void setResponse(String response) {
-        this.responseStr = response;
-    }
-
-}
 
 public class FactoryChain implements Process {
 
@@ -65,7 +22,7 @@ public class FactoryChain implements Process {
         //???????????????index????1
         AbstractProcessingFactory f = chains.get(index);
         index++;
-        //????????????????????????????????§Õ???
+        //????????????????????????????????ï¿½ï¿½???
         f.doProcess(request, response, this);
     }
 

@@ -48,17 +48,17 @@ public class FieldMementoManager {
     {
         System.out.println();
         System.out.println();
-        System.out.println("开始展示所有备份");
+        System.out.println("Start to show all mementos.");
         int n = list.size();
         if (n==0){
-            System.out.println("空。");
+            System.out.println("Empty set.");
             return;
         }
 
         for (int i = 0; i < n; i++) {
             List<Field> fl = list.get(i).getMementoFieldList();
             System.out.println();
-            System.out.println("第" + i + "次备份的农田：");
+            System.out.println("No." + i + " memento: ");
 
             int count=0;
             for (Field f : fl) {
@@ -67,19 +67,19 @@ public class FieldMementoManager {
                     continue;
                 }
                 count++;
-                System.out.println("第" + f.getIndex() + "块田种着"
-                            + p.getName() + ",成长值为"
-                            + p.getPresentGrowth() + "/"
-                            + p.getMaxGrowth() + ".");
+                System.out.println("No." + f.getIndex() + " field: "
+                        + p.getName() + ". Growth point: "
+                        + p.getPresentGrowth() + "/"
+                        + p.getMaxGrowth() + ".");
             }
 
             if (count == 0) {
-                System.out.println("空");
+                System.out.println("Empty.");
             }
             System.out.println();
         }
         System.out.println();
-        System.out.println("已展示全部。");
+        System.out.println("All showed.");
         System.out.println();
     }
 }

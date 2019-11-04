@@ -1,25 +1,27 @@
-package com.pasture;
+package com.tester;
 
 import com.pasture.Adapter.*;
+import com.pasture.Animal;
 import com.pasture.Bridge.*;
 import com.pasture.Decorator.*;
 import com.pasture.Facade.*;
 import com.pasture.Factory.*;
 import com.pasture.Observer.*;
+import com.pasture.Sheep;
 import com.pasture.Strategy.*;
 import com.pasture.Interpreter.*;
 
 public class AnimalTest {
     public static  void main(String[] args) {
         AnimalFactory animalFactory = new AnimalFactory();
-        System.out.println("-------------Factory Text-------------");
+        System.out.println("-------------Factory Test-------------");
         Animal cat = animalFactory.run("Cat");
         Animal sheep = animalFactory.run("Sheep");
         Animal chicken = animalFactory.run("Chicken");
 
 
 
-        System.out.println("\n\n-------------Strategy Text-------------");
+        System.out.println("\n\n-------------Strategy Test-------------");
         Interaction sing = new Interaction(new Sing());
         sing.executeInteraction(cat, sheep);
 
@@ -31,7 +33,7 @@ public class AnimalTest {
 
 
 
-        System.out.println("\n\n-------------Observer Text-------------");
+        System.out.println("\n\n-------------Observer Test-------------");
         AnimalMonitor monitor = new AnimalMonitor();
 
         new WarningLight(monitor);
@@ -42,7 +44,7 @@ public class AnimalTest {
 
 
 
-        System.out.println("\n\n-------------Bridge Text-------------");
+        System.out.println("\n\n-------------Bridge Test-------------");
         System.out.println("Let the cat to yell 3 times..");
         AnimalYell catYell = new CatYell();
         YellTimes yellThreeTimes = new YellThreeTimes();
@@ -57,7 +59,7 @@ public class AnimalTest {
 
 
 
-        System.out.println("\n\n-------------Decorator Text-------------");
+        System.out.println("\n\n-------------Decorator Test-------------");
         Animal sheep2 = animalFactory.run("Sheep");
 
         System.out.println("Start getting 3 normal wool from sheep (id: " + sheep.id + ").");
@@ -83,7 +85,7 @@ public class AnimalTest {
         );
 
 
-        System.out.println("\n\n-------------Adapter Text-------------");
+        System.out.println("\n\n-------------Adapter Test-------------");
         GrassEat grassEat = new GrassEat();
         //考虑一种食物够 一种食物不够的情况
         grassEat.eat("Grass", sheep);
@@ -92,7 +94,7 @@ public class AnimalTest {
 
 
 
-        System.out.println("\n\n-------------Facade Text-------------");
+        System.out.println("\n\n-------------Facade Test-------------");
         AnimalPooMaker animalPooMaker = new AnimalPooMaker();
         animalPooMaker.pooForCat(2);
         animalPooMaker.pooForChicken(1);
@@ -100,7 +102,7 @@ public class AnimalTest {
 
 
 
-        System.out.println("\n\n-------------Interpreter Text-------------");
+        System.out.println("\n\n-------------Interpreter Test-------------");
         Expression oneLivestock = Interpreter.getLivestockExpression();
         Expression allLivestock = Interpreter.getAllLivestockExpression();
 

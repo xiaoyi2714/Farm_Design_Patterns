@@ -1,4 +1,4 @@
-package com.shop;
+package com.tester;
 
 
 import com.shop.employee.*;
@@ -9,7 +9,7 @@ import com.shop.order.singleton.OrderSummary;
 import com.shop.repository.RepositoryProxy;
 
 
-public class Test {
+public class ShopTest {
     public static void main(String[] args) {
         //单例模式
         System.out.println("---------- Test SingleStore Singleton ----------");

@@ -37,9 +37,9 @@ public class SingleStore implements Store{
     public void setStrategy(SaleStrategy strategy) {
         this.strategy = strategy;
     }
-//    public Double getStrategy(){
-////        return ExecuteStrategy.CalculatePrice(instance.strategy,10.0);
-////    }
+    public Double getStrategy(){
+        return ExecuteStrategy.CalculatePrice(instance.strategy,10.0);
+    }
     //通过仓库反馈来维护strategy数据成员
     public  void update(){
         int inventory;

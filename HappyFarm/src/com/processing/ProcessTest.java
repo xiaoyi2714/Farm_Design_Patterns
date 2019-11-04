@@ -1,5 +1,6 @@
 package com.processing;
 
+import com.processing.*;
 import com.shop.employee.Chicken;
 import com.shop.employee.Egg;
 import com.shop.employee.Wheat;
@@ -7,7 +8,7 @@ import com.shop.repository.RepositoryProxy;
 
 import java.util.Random;
 
-public class Test {
+public class ProcessTest {
 
     public static void main(String[] args) throws CloneNotSupportedException {
         System.out.println("-------------Abstract Factory Test-------------");
@@ -46,7 +47,7 @@ public class Test {
         farmProcessingFactory.execute();
         pastureProcessingFactory.execute();
 
-        System.out.println("-------------Visitor Text-------------");
+        System.out.println("-------------Visitor Test-------------");
         System.out.println("No.0 Machine in FarmProcessingFactory is damaged");
         farmProcessingFactory.machines.get(0).setState(1);
         farmProcessingFactory.machines.get(0).accept(new MachineDisplayVisitor());
@@ -54,7 +55,7 @@ public class Test {
         pastureProcessingFactory.machines.get(13).setState(1);
         pastureProcessingFactory.machines.get(13).accept(new MachineDisplayVisitor());
 
-        System.out.println("-------------Responsibility Chain Text-------------");
+        System.out.println("-------------Responsibility Chain Test-------------");
         RepositoryProxy.Instance();
         RepositoryProxy.Instance().add(Chicken.class,50);
         RepositoryProxy.Instance().add(Wheat.class,50);
