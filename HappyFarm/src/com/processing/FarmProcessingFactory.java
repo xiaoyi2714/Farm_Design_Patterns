@@ -109,7 +109,7 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 					if(2*eggNum>reqNum1) {
 						request.getRepositoryProxy().ask(Flour.class, reqNum1);
 						request.getRepositoryProxy().ask(Egg.class, 2*reqNum1);
-						System.out.println(reqNum+ " EggCake Produced.");
+//						System.out.println(reqNum+ " EggCake Produced.");
 						request.getRepositoryProxy().add(EggCake.class,reqNum1 );
 					}
 					else {

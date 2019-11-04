@@ -7,7 +7,7 @@ import com.shop.order.OrderImpl;
 public class PaidStatus implements OrderStatus{
 
     public void pay(OrderImpl order){
-        System.out.println("请勿重复支付");
+        System.out.println("Please do not pay repeatedly");
     }
 
     public void deliverGoods(OrderImpl order){

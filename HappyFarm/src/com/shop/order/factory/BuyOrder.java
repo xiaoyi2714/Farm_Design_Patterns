@@ -16,11 +16,11 @@ public class BuyOrder implements Order {
         OrderImpl order = new OrderImpl("BUY", map, cost);
         order.pay();
         if (order.deliverGoods()) {
-            System.out.println("成功下单");
+            System.out.println("Order success");
         }
         else {
             order.refund();
-            System.out.println("下单失败");
+            System.out.println("Order failure");
         }
     }
 
@@ -29,11 +29,11 @@ public class BuyOrder implements Order {
         OrderImpl order = new OrderImpl("BUY", map, cost);
         order.pay();
         if (order.deliverGoods()) {
-            System.out.println("成功下单");
+            System.out.println("Order success");
         }
         else {
             order.refund();
-            System.out.println("下单失败");
+            System.out.println("Order failure");
         }
     }
 }

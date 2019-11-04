@@ -14,7 +14,7 @@ public class RepositoryImpl implements Repository {
         }else{
             storageList.put(type, value + storageList.get(type));
         }
-        System.out.printf("仓库中的%s项添加了%d，目前库存%d\n", type, value, storageList.get(type));
+        System.out.printf("%s in repository add: %d, now: %d\n", type, value, storageList.get(type));
 
     }
 
@@ -63,7 +63,7 @@ public class RepositoryImpl implements Repository {
         Iterator<Map.Entry<String, Integer>> iterator = storageList.entrySet().iterator();
         while (iterator.hasNext()){
             Map.Entry<String, Integer> entry = iterator.next();
-            System.out.printf("仓库中%s项的库存为%d\n", entry.getKey(), entry.getValue());
+            System.out.printf("%s in repository: %d\n", entry.getKey(), entry.getValue());
         }
     }
 
@@ -83,7 +83,7 @@ public class RepositoryImpl implements Repository {
     //消耗
     private void consume(String type, Integer value){
         storageList.put(type, storageList.get(type) - value);
-        System.out.printf("仓库中的%s项消耗了%d，目前库存%d\n", type, value, storageList.get(type));
+        System.out.printf("%s in repository consume: %d, now: %d\n", type, value, storageList.get(type));
     }
 
 

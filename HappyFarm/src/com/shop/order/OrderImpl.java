@@ -51,13 +51,13 @@ public class OrderImpl {
             case "SALE":
                 for (Map.Entry<Class, Integer> entry : orderList.entrySet()) {
                     if(entry.getValue() > repo.checkItemNum(entry.getKey())){
-                        System.out.println("库存不足");
+                        System.out.println("Insufficient inventory");
                         return false;
                     }
                 }
                 return true;
             default:
-                System.out.println("operator error");
+                System.out.println("Operator error");
                 return false;
         }
     }
@@ -77,22 +77,22 @@ public class OrderImpl {
                 repo.ask(orderList);
                 break;
             default:
-                System.out.println("operator error");
+                System.out.println("Operator error");
         }
-        System.out.println("库存已更新");
+        System.out.println("Inventory updated");
     }
 
     //更新summary
     public void updateSummary(){
         OrderSummary summary = OrderSummary.getSummary();
         summary.add(orderList);
-        System.out.println("销售统计已更新");
+        System.out.println("Summary updated");
     }
 
     //支付
     public void pay() {
         mStatus.pay(this);
-        System.out.println("已付款");
+        System.out.println("Payment received");
         // 当前下的状态调用支付，然后把当前状态设置为Paid的状态
         setStatus(new PaidStatus());
     }
@@ -110,7 +110,7 @@ public class OrderImpl {
                 System.out.println("operator error");
         }
         this.updateMoney();
-        System.out.println("已退款");
+        System.out.println("Refunded");
     }
 
     //发货

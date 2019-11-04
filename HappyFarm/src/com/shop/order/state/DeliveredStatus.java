@@ -8,11 +8,11 @@ public class DeliveredStatus implements OrderStatus {
 
     //支付
     public void pay(OrderImpl order){
-        System.out.println("请勿重复支付");
+        System.out.println("Please do not pay repeatedly");
     }
 
     //更新库存
     public void deliverGoods(OrderImpl order){
-        System.out.println("不在状态");
+        System.out.println("State error");
     }
 }

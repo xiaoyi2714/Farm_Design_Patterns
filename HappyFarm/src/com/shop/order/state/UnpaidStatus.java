@@ -11,7 +11,7 @@ public class UnpaidStatus implements OrderStatus{
     }
 
     public void deliverGoods(OrderImpl order){
-        System.out.println("不在状态");
+        System.out.println("State error");
     }
 
 }

@@ -39,7 +39,7 @@ public class OrderSummary {
         Iterator<Map.Entry<String, Integer>> iterator = saleList.entrySet().iterator();
         while (iterator.hasNext()){
             Map.Entry<String, Integer> entry = iterator.next();
-            System.out.printf("销售报告中%s项的销售量为%d", entry.getKey(), entry.getValue());
+            System.out.printf("%s in summary: %d\n", entry.getKey(), entry.getValue());
         }
     }
 }

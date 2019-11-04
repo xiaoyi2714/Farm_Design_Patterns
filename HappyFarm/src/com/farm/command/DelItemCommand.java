@@ -1,6 +1,6 @@
 package com.farm.command;
 
-import com.shop.order.Corn;
+//import com.shop.order.Corn;
 import com.shop.repository.RepositoryProxy;
 
 //删除仓库item

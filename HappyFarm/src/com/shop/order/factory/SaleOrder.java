@@ -17,11 +17,11 @@ public class SaleOrder implements Order {
         order.pay();
         if(order.deliverGoods()){
             order.updateSummary();
-            System.out.println("成功下单");
+            System.out.println("Order success");
         }
         else {
             order.refund();
-            System.out.println("下单失败");
+            System.out.println("Order failure");
         }
     }
 
@@ -31,11 +31,11 @@ public class SaleOrder implements Order {
         order.pay();
         if(order.deliverGoods()){
             order.updateSummary();
-            System.out.println("成功下单");
+            System.out.println("Order success");
         }
         else {
             order.refund();
-            System.out.println("下单失败");
+            System.out.println("Order failure");
         }
     }
 
