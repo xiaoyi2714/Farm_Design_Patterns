@@ -335,7 +335,7 @@ public class Test {
         System.out.println("The Eggs cost the customer " + store.useStrategy(new Egg().getprice() * 1000));
         Employee.createSaleOrder(Egg.class,1000);
 
-        System.out.println("---------- Test Builder ----------");
+        System.out.println("----------  Builder Test----------");
         System.out.println("Firstly,we will add some different goods in the repository");
         RepositoryProxy.Instance().add(Corn.class, 100);
         RepositoryProxy.Instance().add(Egg.class, 100);
