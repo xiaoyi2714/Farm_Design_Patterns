@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4902c60e-a9dc-4345-8325-fb15e2dde830" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Farm_Design_Patterns.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Farm_Design_Patterns.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/farm/CornPlant.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/farm/CornPlant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/farm/FarmManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/farm/FarmManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/farm/PotatoPlant.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/farm/PotatoPlant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/farm/WheatPlant.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/farm/WheatPlant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/processing/FarmProcessingFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/processing/FarmProcessingFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/processing/InitialEnvironment.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/processing/InitialEnvironment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/processing/PastureProcessingFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/processing/PastureProcessingFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/processing/ProcessTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/processing/ProcessTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/shop/order/factory/NullOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/shop/order/factory/NullOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HappyFarm/src/com/tester/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/HappyFarm/src/com/tester/Test.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,6 +24,10 @@
   </component>
   <component name="ProjectId" id="1SyD82hzK6eQuifL4SuFmPP30jO" />
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -28,7 +37,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
@@ -45,7 +54,33 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Test (1)">
+    <configuration name="ProcessTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.processing.ProcessTest" />
+      <module name="Farm_Design_Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.processing.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.tester.Test" />
+      <module name="Farm_Design_Patterns" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.tester.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Test" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.processing.Test" />
       <module name="Farm_Design_Patterns" />
@@ -53,6 +88,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Application.ProcessTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -71,6 +112,8 @@
       <workItem from="1572689199674" duration="3519000" />
       <workItem from="1572692845263" duration="724000" />
       <workItem from="1572754982649" duration="43000" />
+      <workItem from="1573126123502" duration="1099000" />
+      <workItem from="1573139585648" duration="2089000" />
     </task>
     <servers />
   </component>

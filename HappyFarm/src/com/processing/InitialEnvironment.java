@@ -9,7 +9,7 @@ public class InitialEnvironment extends Environment {
 	@Override
 	public void handle(AbstractProcessingFactory abstractProcessingFactory) {
 		System.out.println("current humidity:"+getHumidity()+"%");
-		System.out.println("current temperature:"+getTemperature()+"℃");
+		System.out.println("current temperature:"+getTemperature()+"degree");
 		if(getHumidity() > 30) {
 			System.out.println("humidity is too high");
 			setHumidity(15);
@@ -18,7 +18,7 @@ public class InitialEnvironment extends Environment {
 		if(getTemperature() > 25) {
 			System.out.println("temperature is too high");
 			setTemperature(15);
-			System.out.println("temperature decreased to 15%℃");
+			System.out.println("temperature decreased to 15" + "degree");
 		}
 	}
 }

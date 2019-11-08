@@ -3,5 +3,6 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/HappyFarm/src/com/processing/FactoryChain.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/HappyFarm/src/com/processing/FarmProcessingFactory.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/HappyFarm/src/com/processing/PastureProcessingFactory.java" charset="GBK" />
   </component>
 </project>

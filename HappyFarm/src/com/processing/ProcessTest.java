@@ -55,7 +55,7 @@ public class ProcessTest {
         pastureProcessingFactory.machines.get(13).setState(1);
         pastureProcessingFactory.machines.get(13).accept(new MachineDisplayVisitor());
 
-        System.out.println("-------------Responsibility Chain Test-------------");
+        System.out.println("-------------Responsibility Chain Test-------------");
         RepositoryProxy.Instance();
         RepositoryProxy.Instance().add(Chicken.class,50);
         RepositoryProxy.Instance().add(Wheat.class,50);

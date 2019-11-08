@@ -30,7 +30,7 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 
 	@Override
 	public void getMachinesState() {
-		System.out.println("check machines' state̬");
+		System.out.println("check machines' state");
 		int size = machines.size();
 		Random random = new Random();
 		int index = random.nextInt(size);
@@ -40,7 +40,7 @@ public class FarmProcessingFactory extends Produce implements AbstractProcessing
 			int state = machines.get(i).getMachineState();
 			System.out.println("NO." + i + "machine's state:" + state);
 			if(state == 1) {
-				System.out.println("remove NO." + i + "machine");
+				System.out.println("remove NO." + i + " machine");
 				Machine machine = machines.get(i);
 				machines.remove(i);
 				try {
