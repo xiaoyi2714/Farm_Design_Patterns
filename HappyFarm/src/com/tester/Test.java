@@ -237,7 +237,9 @@ public class Test {
         System.out.println("--------------------------------------");
         System.out.println("\n\n-------------Abstract Factory Test-------------");
         FarmProcessingFactory farmProcessingFactory = new FarmProcessingFactory();
+        System.out.println("Successfully create FarmProcessingFactory");
         PastureProcessingFactory pastureProcessingFactory = new PastureProcessingFactory();
+        System.out.println("Successfully create PastureProcessingFactory");
         for(int i = 0;i<15;i++) {
             farmProcessingFactory.addMachine();
             pastureProcessingFactory.addMachine();
